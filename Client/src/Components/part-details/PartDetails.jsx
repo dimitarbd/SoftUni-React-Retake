@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 import { useGetOnePart } from "../../hooks/useParts";
 import { useForm } from "../../hooks/useForm";
-import useCreateComment from "../../hooks/useComments";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useCreateComment, useGetAllComments } from "../../hooks/useComments";
+import { useAuthcontext } from "../../contexts/AuthContext";
 
 const initialValues = {
     email: '',
@@ -17,9 +16,10 @@ const initialValues = {
 
 export default function PartDetails() {
     const { partId } = useParams();
+    const [ comments, setComments] = useGetAllComments(partId);
     const createComment = useCreateComment();
     const [part, setPart] = useGetOnePart(partId);
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated } = useAuthcontext();
     const {
         values,
         changeHandler,
@@ -211,7 +211,7 @@ export default function PartDetails() {
                                     <ul className="nav product-menu">
                                         <li><a className="active" data-toggle="tab" href="#description"><span>Description</span></a>
                                         </li>
-                                        <li><a data-toggle="tab" href="#reviews"><span>Reviews ({part.comments ? Object.values(part.comments).length : 0})</span></a></li>
+                                        <li><a data-toggle="tab" href="#reviews"><span>Reviews ({comments.length})</span></a></li>
                                     </ul>
                                 </div>
                                 <div className="tab-content uren-tab_content">
@@ -225,8 +225,8 @@ export default function PartDetails() {
                                             <form className="form-horizontal" id="form-review" onSubmit={submitHandler}>
                                                 <div id="review">
                                                     <table className="table table-striped table-bordered">
-                                                        {/* {Object.keys(part.comments || {}).length > 0
-                                                            ? Object.values(part.comments).map((comment) => (
+                                                        {comments.length > 0
+                                                            ? comments.map((comment) => (
                                                                 <tbody key={comment._id}>
                                                                     <tr>
                                                                         <td style={{ width: '50%' }}><strong>{comment.email}</strong></td>
@@ -249,10 +249,12 @@ export default function PartDetails() {
                                                                     <td colSpan="2">There are no reviews for this product.</td>
                                                                 </tr>
                                                             </tbody>
-                                                        } */}
+                                                        }
                                                     </table>
                                                 </div>
-                                                <h2>Write a review</h2>
+                                                { isAuthenticated && (
+                                                <div className="review-box">
+                                                    <h2>Write a review</h2>
                                                 <div className="form-group required">
                                                     {/* <div className="col-sm-12 p-0">
                                                         <label>Your Email <span className="required">*</span></label>
@@ -309,6 +311,13 @@ export default function PartDetails() {
                                                         <button className="uren-btn-2">Continue</button>
                                                     </div>
                                                 </div>
+                                                </div>
+                                                )}
+                                                {!isAuthenticated && (
+                                                    <div className="review-box">
+                                                        <h6>To leave a review, please <Link to="/login">log in</Link></h6>
+                                                    </div>
+                                            )}
                                             </form>
                                         </div>
                                     </div>
