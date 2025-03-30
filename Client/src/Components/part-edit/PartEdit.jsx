@@ -9,18 +9,16 @@ export default function PartEdit() {
     const { isAuthenticated } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
     const [formData, setFormData] = useState({
-        name: '',
+        title: '',
         price: '',
         description: '',
         imageUrl: '',
         category: '',
-        stock: '',
-        specifications: {
-            brand: '',
-            model: '',
-            year: '',
-            compatibility: ''
-        }
+        quantity: '',
+        brand: '',
+        model: '',
+        year: '',
+        rating: '',
     });
 
     useEffect(() => {
