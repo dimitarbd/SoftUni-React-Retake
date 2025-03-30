@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import commentsAPI from "../api/comments-api";
 
-export function useCreateComment(partId, email, text, rating, currentDate) {
+export function useCreateComment() {
     const createHandler = (partId, text, rating, currentDate) => {
         commentsAPI.create(partId, text, rating, currentDate)
             .then((response) => {

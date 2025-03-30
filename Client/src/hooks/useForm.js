@@ -7,16 +7,20 @@ export function useForm(initialValues, submitCallback) {
         setValues(state => ({
             ...state,
             [e.target.name]: e.target.value,
-        }))};;
-
-        const submitHandler = (e) => {
-            e.preventDefault();
-            submitCallback(values);
-        }
-
-        return {
-            values,
-            changeHandler,
-            submitHandler,
-        };
+        }))
     };
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        
+        submitCallback(values);
+
+        setValues(initialValues);        
+    }
+
+    return {
+        values,
+        changeHandler,
+        submitHandler,
+    };
+};

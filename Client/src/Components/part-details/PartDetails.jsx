@@ -8,26 +8,35 @@ import { useCreateComment, useGetAllComments } from "../../hooks/useComments";
 import { useAuthcontext } from "../../contexts/AuthContext";
 
 const initialValues = {
-    email: '',
-    comment: '',
+    text: '',
     rating: 1,
+    currentDate: ''
 };
 
 
 export default function PartDetails() {
     const { partId } = useParams();
-    const [ comments, setComments] = useGetAllComments(partId);
+    const [comments, setComments] = useGetAllComments(partId);
     const createComment = useCreateComment();
-    const [part, setPart] = useGetOnePart(partId);
+    const [part] = useGetOnePart(partId);
     const { isAuthenticated } = useAuthcontext();
     const {
         values,
         changeHandler,
         submitHandler
-    } = useForm(initialValues, ({ comment }) => {
-        const currentDate = new Date().toLocaleDateString('en-GB').split('/').map((part, index) => index === 2 ? part.slice(-2) : part).join('/');
+    } = useForm(initialValues, () => {
+        try {
+            const currentDate = new Date().toLocaleDateString('en-GB').split('/').map((part, index) => index === 2 ? part.slice(-2) : part).join('/');
+            const newComment =  createComment(partId, values.text, values.rating, currentDate); // Add `await` here
+            console.log('New Comment:', newComment);
+            // Assuming createComment returns the created comment
+            // Update the comments state with the new comment
 
-        createComment(partId, values.email, values.comment, values.rating, currentDate);
+            setComments(oldComments => [...oldComments, newComment]);
+
+        } catch (error) {
+            console.error("Error creating comment:", error);
+        }
         // const newComment = createComment(partId, values.email, values.comment, values.rating, currentDate);
 
         // setPart((prevState) => ({
@@ -80,6 +89,8 @@ export default function PartDetails() {
         return stars;
     };
 
+    console.log('Comments:', comments);
+
     return (
         <>
             {/* <!-- Begin Uren's Breadcrumb Area --> */}
@@ -124,11 +135,7 @@ export default function PartDetails() {
                                     </div>
                                     <div className="rating-box">
                                         <ul>
-                                            <li><i className="ion-android-star"></i></li>
-                                            <li><i className="ion-android-star"></i></li>
-                                            <li><i className="ion-android-star"></i></li>
-                                            <li className="silver-color"><i className="ion-android-star"></i></li>
-                                            <li className="silver-color"><i className="ion-android-star"></i></li>
+                                            {renderRating(part.rating)}
                                         </ul>
                                     </div>
                                     <div className="sp-essential_stuff">
@@ -225,26 +232,27 @@ export default function PartDetails() {
                                             <form className="form-horizontal" id="form-review" onSubmit={submitHandler}>
                                                 <div id="review">
                                                     <table className="table table-striped table-bordered">
-                                                        {comments.length > 0
-                                                            ? comments.map((comment) => (
-                                                                <tbody key={comment._id}>
-                                                                    <tr>
-                                                                        <td style={{ width: '50%' }}><strong>{comment.email}</strong></td>
-                                                                        <td className="text-right">{comment.currentDate}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colSpan="2">
-                                                                            <p>{comment.text}</p>
-                                                                            <div className="rating-box">
-                                                                                <ul>
-                                                                                    {renderRating(comment.rating)}
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            ))
-                                                            : <tbody>
+                                                        {comments.map(comment => (
+                                                            <tbody key={comment._id}>
+                                                                <tr>
+                                                                    <td style={{ width: '50%' }}><strong>{comment.author.email}</strong></td>
+                                                                    <td className="text-right">{comment.currentDate}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colSpan="2">
+                                                                        <p>{comment.text}</p>
+                                                                        <div className="rating-box">
+                                                                            <ul>
+                                                                                {renderRating(comment.rating)}
+                                                                            </ul>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        ))
+                                                        }
+                                                        {comments.length === 0 &&
+                                                            <tbody>
                                                                 <tr>
                                                                     <td colSpan="2">There are no reviews for this product.</td>
                                                                 </tr>
@@ -252,72 +260,60 @@ export default function PartDetails() {
                                                         }
                                                     </table>
                                                 </div>
-                                                { isAuthenticated && (
-                                                <div className="review-box">
-                                                    <h2>Write a review</h2>
-                                                <div className="form-group required">
-                                                    {/* <div className="col-sm-12 p-0">
-                                                        <label>Your Email <span className="required">*</span></label>
-                                                        <input
-                                                            className="review-input"
-                                                            type="email"
-                                                            name="email"
-                                                            id="email"
-                                                            required
-                                                            onChange={changeHandler}
-                                                            value={values.email}
-                                                        />
-                                                    </div> */}
-                                                </div>
-                                                <div className="form-group required second-child">
-                                                    <div className="col-sm-12 p-0">
-                                                        <label className="control-label">
-                                                            Share your opinion
-                                                        </label>
+                                                {isAuthenticated && (
+                                                    <div className="review-box">
+                                                        <h2>Write a review</h2>
+                                                        <div className="form-group required">
+                                                        </div>
+                                                        <div className="form-group required second-child">
+                                                            <div className="col-sm-12 p-0">
+                                                                <label className="control-label">
+                                                                    Share your opinion
+                                                                </label>
 
-                                                        <textarea
-                                                            className="review-textarea"
-                                                            type="comment"
-                                                            name="comment"
-                                                            id="comment"
-                                                            onChange={changeHandler}
-                                                            value={values.comment}
-                                                        ></textarea>
-                                                    </div>
-                                                </div>
-                                                <div className="form-group last-child required">
-                                                    <div className="col-sm-12 p-0">
-                                                        <div className="your-opinion">
-                                                            <label>Your Rating</label>
-                                                            <span>
-                                                                <select
-                                                                    className="star-rating"
-                                                                    type="rating"
-                                                                    name="rating"
-                                                                    id="rating"
+                                                                <textarea
+                                                                    className="review-textarea"
+                                                                    type="text"
+                                                                    name="text"
+                                                                    id="text"
                                                                     onChange={changeHandler}
-                                                                    value={values.rating}
-                                                                >
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                </select>
-                                                            </span>
+                                                                    value={values.text}
+                                                                ></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group last-child required">
+                                                            <div className="col-sm-12 p-0">
+                                                                <div className="your-opinion">
+                                                                    <label>Your Rating</label>
+                                                                    <span>
+                                                                        <select
+                                                                            className="star-rating"
+                                                                            type="rating"
+                                                                            name="rating"
+                                                                            id="rating"
+                                                                            onChange={changeHandler}
+                                                                            value={values.rating}
+                                                                        >
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                        </select>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div className="uren-btn-ps_right">
+                                                                <button className="uren-btn-2">Continue</button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div className="uren-btn-ps_right">
-                                                        <button className="uren-btn-2">Continue</button>
-                                                    </div>
-                                                </div>
-                                                </div>
                                                 )}
                                                 {!isAuthenticated && (
                                                     <div className="review-box">
                                                         <h6>To leave a review, please <Link to="/login">log in</Link></h6>
                                                     </div>
-                                            )}
+                                                )}
                                             </form>
                                         </div>
                                     </div>

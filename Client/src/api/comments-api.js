@@ -2,14 +2,15 @@ import requester from "./requester";
 
 const BASE_URL = 'http://localhost:3030/data/comments';
 
-const create = (partId, email, text, rating, currentDate) => requester.post(BASE_URL, { partId, email, text, rating, currentDate });
+const create = (partId, text, rating, currentDate) => requester.post(BASE_URL, { partId, text, rating, currentDate });
 
-const getAll = (partId) => {
+const getAll = async (partId) => {
     const query = new URLSearchParams({
         where: `partId="${partId}"`,
+        load: `author=_ownerId:users`,
     }).toString();
    
-   return requester.get(`${BASE_URL}?${query}`);
+   return await requester.get(`${BASE_URL}?${query}`);
 
 }
 
