@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 import { useGetOnePart } from "../../hooks/useParts";
 import { useForm } from "../../hooks/useForm";
+import useCreateComment from "../../hooks/useComments";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const initialValues = {
     email: '',
@@ -13,31 +16,32 @@ const initialValues = {
 
 
 export default function PartDetails() {
-    const [part, setPart] = useGetOnePart();
     const { partId } = useParams();
-    const { userId } = useAuthContext();
-    const { 
+    const createComment = useCreateComment();
+    const [part, setPart] = useGetOnePart(partId);
+    const { isAuthenticated } = useContext(AuthContext);
+    const {
         values,
         changeHandler,
         submitHandler
-    } = useForm(initialValues, ({ comment })=> {
+    } = useForm(initialValues, ({ comment }) => {
         const currentDate = new Date().toLocaleDateString('en-GB').split('/').map((part, index) => index === 2 ? part.slice(-2) : part).join('/');
 
-        const newComment = commentsApi.create(partId, values.email, values.comment, values.rating, currentDate);
+        createComment(partId, values.email, values.comment, values.rating, currentDate);
+        // const newComment = createComment(partId, values.email, values.comment, values.rating, currentDate);
 
-        setPart((prevState) => ({
-            ...prevState,
-            comments: {
-                ...prevState.comments,
-                [newComment._id]: newComment
-            }
-        }));
+        // setPart((prevState) => ({
+        //     ...prevState,
+        //     comments: {
+        //         ...prevState.comments,
+        //         [newComment._id]: newComment
+        //     }
+        // }));
 
-        setValues(initialValues);
+        // setValues(initialValues);
     }
     );
 
-    // const { isAuthenticated } = useContext(AuthContext);    
 
     // const [part, setPart] = useGetOnePart(partId);
     // const [email, setEmail] = useState('');
@@ -218,7 +222,7 @@ export default function PartDetails() {
                                     </div>
                                     <div id="reviews" className="tab-pane" role="tabpanel">
                                         <div className="tab-pane active" id="tab-review">
-                                            <form className="form-horizontal" id="form-review" onSubmit={CommentSubmitHandler}>
+                                            <form className="form-horizontal" id="form-review" onSubmit={submitHandler}>
                                                 <div id="review">
                                                     <table className="table table-striped table-bordered">
                                                         {/* {Object.keys(part.comments || {}).length > 0
@@ -250,18 +254,18 @@ export default function PartDetails() {
                                                 </div>
                                                 <h2>Write a review</h2>
                                                 <div className="form-group required">
-                                                    <div className="col-sm-12 p-0">
+                                                    {/* <div className="col-sm-12 p-0">
                                                         <label>Your Email <span className="required">*</span></label>
                                                         <input
                                                             className="review-input"
                                                             type="email"
-                                                            name="con_email"
-                                                            id="con_email"
+                                                            name="email"
+                                                            id="email"
                                                             required
                                                             onChange={changeHandler}
                                                             value={values.email}
                                                         />
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                                 <div className="form-group required second-child">
                                                     <div className="col-sm-12 p-0">
@@ -271,8 +275,9 @@ export default function PartDetails() {
 
                                                         <textarea
                                                             className="review-textarea"
-                                                            name="con_message"
-                                                            id="con_message"
+                                                            type="comment"
+                                                            name="comment"
+                                                            id="comment"
                                                             onChange={changeHandler}
                                                             value={values.comment}
                                                         ></textarea>
@@ -285,6 +290,9 @@ export default function PartDetails() {
                                                             <span>
                                                                 <select
                                                                     className="star-rating"
+                                                                    type="rating"
+                                                                    name="rating"
+                                                                    id="rating"
                                                                     onChange={changeHandler}
                                                                     value={values.rating}
                                                                 >
@@ -298,7 +306,7 @@ export default function PartDetails() {
                                                         </div>
                                                     </div>
                                                     <div className="uren-btn-ps_right">
-                                                        <button className="uren-btn-2" onSubmit={submitHandler}>Continue</button>
+                                                        <button className="uren-btn-2">Continue</button>
                                                     </div>
                                                 </div>
                                             </form>
