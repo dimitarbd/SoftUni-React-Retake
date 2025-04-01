@@ -6,6 +6,7 @@ import { useGetOnePart } from "../../hooks/useParts";
 import { useForm } from "../../hooks/useForm";
 import { useCreateComment, useGetAllComments } from "../../hooks/useComments";
 import { useAuthcontext } from "../../contexts/AuthContext";
+import commentsAPI from "../../api/comments-api";
 
 const initialValues = {
     text: '',
@@ -17,39 +18,37 @@ const initialValues = {
 export default function PartDetails() {
     const { partId } = useParams();
     const [comments, setComments] = useGetAllComments(partId);
+    
     const createComment = useCreateComment();
     const [part] = useGetOnePart(partId);
     const { isAuthenticated } = useAuthcontext();
     const {
         changeHandler,
         submitHandler,
+        resetForm, // Destructure resetForm
         values,
-    } = useForm(initialValues, async ({text, rating}) => {
+    } = useForm(initialValues, async ({ text, rating }) => {
         try {
-            const currentDate = new Date().toLocaleDateString('en-GB').split('/').map((part, index) => index === 2 ? part.slice(-2) : part).join('/');
-            const newComment = await createComment(partId, text, rating, currentDate); 
+            const currentDate = new Date()
+                .toLocaleDateString('en-GB')
+                .split('/')
+                .map((part, index) => (index === 2 ? part.slice(-2) : part))
+                .join('/');
+            
+            // Create the new comment
+            const newComment = await createComment(partId, text, rating, currentDate);
             console.log('New Comment:', newComment);
-            // Assuming createComment returns the created comment
-            // Update the comments state with the new comment
 
-            setComments(oldComments => [...oldComments, newComment]);
+            // Fetch the updated comments directly from the API
+            const updatedComments = await commentsAPI.getAll(partId);
+            setComments(updatedComments);
 
+            // Reset the form values to initial state
+            resetForm();
         } catch (error) {
             console.error("Error creating comment:", error);
         }
-        // const newComment = createComment(partId, values.email, values.comment, values.rating, currentDate);
-
-        // setPart((prevState) => ({
-        //     ...prevState,
-        //     comments: {
-        //         ...prevState.comments,
-        //         [newComment._id]: newComment
-        //     }
-        // }));
-
-        // setValues(initialValues);
-    }
-    );
+    });
 
 
     // const [part, setPart] = useGetOnePart(partId);
