@@ -35,7 +35,7 @@ async function requester(method, url, data) {
         throw result;
     }
 
-    return result;
+    return await result;
 };
 
 export const get = requester.bind(null, 'GET');

@@ -21,13 +21,13 @@ export default function PartDetails() {
     const [part] = useGetOnePart(partId);
     const { isAuthenticated } = useAuthcontext();
     const {
-        values,
         changeHandler,
-        submitHandler
-    } = useForm(initialValues, () => {
+        submitHandler,
+        values,
+    } = useForm(initialValues, async ({text, rating}) => {
         try {
             const currentDate = new Date().toLocaleDateString('en-GB').split('/').map((part, index) => index === 2 ? part.slice(-2) : part).join('/');
-            const newComment =  createComment(partId, values.text, values.rating, currentDate); // Add `await` here
+            const newComment = await createComment(partId, text, rating, currentDate); 
             console.log('New Comment:', newComment);
             // Assuming createComment returns the created comment
             // Update the comments state with the new comment
