@@ -19,9 +19,9 @@ export default function PartDetails() {
     const [comments, setComments] = useGetAllComments(partId);
     
     const createComment = useCreateComment();
-    const [part, userId] = useGetOnePart(partId);
-    const { isAuthenticated } = useAuthcontext();
-    console.log("isAuthenticated:", isAuthenticated);
+    const [part] = useGetOnePart(partId);
+    const { isAuthenticated, userId } = useAuthcontext();
+    console.log('Current User ID:', userId);
     const {
         changeHandler,
         submitHandler,
@@ -215,32 +215,29 @@ export default function PartDetails() {
                                                                 <tr>
                                                                     <td colSpan="2">
                                                                         <p>{comment.text}</p>
-                                                                        <div className="rating-box">
-                                                                            <ul>
+                                                                        <div className="rating-box d-flex justify-content-between align-items-center">
+                                                                            <ul className="d-flex">
                                                                                 {renderRating(comment.rating)}
                                                                             </ul>
+                                                                            {/* Add Edit and Delete Buttons */}
+                                                                            {isAuthenticated && comment.author._id === userId && (
+                                                                                <div className="comment-actions d-flex">
+                                                                                    <button
+                                                                                        className="uren-btn uren-btn_sm uren-btn-bondi_blue"
+                                                                                        onClick={() => handleEditComment(comment._id, comment.text, comment.rating)}
+                                                                                        style={{ marginRight: '10px' }}
+                                                                                    >
+                                                                                        Edit
+                                                                                    </button>
+                                                                                    <button
+                                                                                        className="uren-btn uren-btn_sm uren-btn_dark"
+                                                                                        onClick={() => handleDeleteComment(comment._id)}
+                                                                                    >
+                                                                                        Delete
+                                                                                    </button>
+                                                                                </div>
+                                                                            )}
                                                                         </div>
-                                                                        {/* Add Edit and Delete Buttons */}
-                                                                        {isAuthenticated && comment.author._id === userId && ( // Ensure only the author can edit/delete
-                                                                            <div className="comment-actions">
-                                                                                <button
-                                                                                    className="btn btn-edit"
-                                                                                    onClick={() => handleEditComment(comment._id, comment.text, comment.rating)}
-                                                                                >
-                                                                                    Edit
-                                                                                </button>
-                                                                                <button
-                                                                                    className="btn btn-delete"
-                                                                                    onClick={() => handleDeleteComment(comment._id)}
-                                                                                >
-                                                                                    Delete
-                                                                                </button>
-                                                                                {/* Add console logs */}
-                                                                                {console.log("comment.author._id:", comment.author._id)}
-                                                                                {console.log("userId:", userId)}
-                                                                                {console.log("comment:", comment)}
-                                                                            </div>
-                                                                        )}
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -323,4 +320,3 @@ export default function PartDetails() {
         </>
     );
 }
-

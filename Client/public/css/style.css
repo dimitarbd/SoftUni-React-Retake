@@ -3405,6 +3405,24 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .price-filter 
   border-color: #ffc400;
 }
 
+.comment-actions .uren-btn {
+    width: 100px; /* Ensure consistent width for both buttons */
+    height: 40px; /* Set a consistent height */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Horizontally center the text */
+    align-items: center; /* Vertically center the text */
+    padding: 0; /* Remove extra padding */
+    font-size: 14px; /* Adjust font size */
+    font-weight: 600; /* Make text bold */
+    text-transform: uppercase; /* Ensure text is uppercase */
+    border-radius: 5px; /* Add rounded corners */
+    text-align: center; /* Center text alignment */
+}
+
+.comment-actions .uren-btn:hover {
+    opacity: 0.9; /* Add hover effect */
+}
+
 .special-product_slider .slide-item .inner-slide .single-product .product-content .product-desc_info .add-actions ul > li > a.uren-add_cart,
 .special-product_slider-2 .slide-item .inner-slide .single-product .product-content .product-desc_info .add-actions ul > li > a.uren-add_cart {
   font-weight: 700;
