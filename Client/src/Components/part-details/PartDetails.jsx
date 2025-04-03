@@ -1,4 +1,3 @@
-// import { useState, useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -20,8 +19,9 @@ export default function PartDetails() {
     const [comments, setComments] = useGetAllComments(partId);
     
     const createComment = useCreateComment();
-    const [part] = useGetOnePart(partId);
+    const [part, userId] = useGetOnePart(partId);
     const { isAuthenticated } = useAuthcontext();
+    console.log("isAuthenticated:", isAuthenticated);
     const {
         changeHandler,
         submitHandler,
@@ -48,33 +48,7 @@ export default function PartDetails() {
         } catch (error) {
             console.error("Error creating comment:", error);
         }
-    });
-
-
-    // const [part, setPart] = useGetOnePart(partId);
-    // const [email, setEmail] = useState('');
-    // const [comment, setComment] = useState('');
-    // const [rating, setRating] = useState(1);
-
-    // const CommentSubmitHandler = async (e) => {
-    //     e.preventDefault();
-
-    //     const currentDate = new Date().toLocaleDateString('en-GB').split('/').map((part, index) => index === 2 ? part.slice(-2) : part).join('/');
-
-    //     const newComment = await commentsApi.create(partId, email, comment, rating, currentDate);
-
-    //     setPart((prevState) => ({
-    //         ...prevState,
-    //         comments: {
-    //             ...prevState.comments,
-    //             [newComment._id]: newComment
-    //         }
-    //     }));
-
-    //     setEmail('');
-    //     setComment('');
-    //     setRating(1);
-    // }
+    });    
 
     const renderRating = (rating) => {
         const stars = [];
@@ -88,7 +62,8 @@ export default function PartDetails() {
         return stars;
     };
 
-    console.log('Comments:', comments);
+    // const isOwner = userId === part._ownerId;
+    
 
     return (
         <>
@@ -245,6 +220,27 @@ export default function PartDetails() {
                                                                                 {renderRating(comment.rating)}
                                                                             </ul>
                                                                         </div>
+                                                                        {/* Add Edit and Delete Buttons */}
+                                                                        {isAuthenticated && comment.author._id === userId && ( // Ensure only the author can edit/delete
+                                                                            <div className="comment-actions">
+                                                                                <button
+                                                                                    className="btn btn-edit"
+                                                                                    onClick={() => handleEditComment(comment._id, comment.text, comment.rating)}
+                                                                                >
+                                                                                    Edit
+                                                                                </button>
+                                                                                <button
+                                                                                    className="btn btn-delete"
+                                                                                    onClick={() => handleDeleteComment(comment._id)}
+                                                                                >
+                                                                                    Delete
+                                                                                </button>
+                                                                                {/* Add console logs */}
+                                                                                {console.log("comment.author._id:", comment.author._id)}
+                                                                                {console.log("userId:", userId)}
+                                                                                {console.log("comment:", comment)}
+                                                                            </div>
+                                                                        )}
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -327,3 +323,4 @@ export default function PartDetails() {
         </>
     );
 }
+

@@ -35,7 +35,7 @@ SoftUni React Course Project
 ## 6. API Hooks
 - [x] Form Hook
 - [x] PartAPI Hooks
-- [ ] Comment Hooks
+- [x] Comment Hooks
 ## 7. Authentication
 - [x] Auth API
   - [x] Login
@@ -61,7 +61,8 @@ SoftUni React Course Project
 ## 9. Refactoring
 - [x] Extract auth state from App component
 - [x] Persist auth state
-- [ ] Comments
+- [x] Comments
+- [ ] Edit and delete ownership rendering
 
 
 ## Notes

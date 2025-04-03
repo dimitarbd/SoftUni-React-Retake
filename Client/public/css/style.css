@@ -3991,6 +3991,10 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .price-filter 
 /*  17 - Components - Product Tab
 /*----------------------------------------*/
 /* ---Uren's Product Tab Area--- */
+.btn {
+    display: block; /* Ensure buttons are visible */
+}
+
 .sp-product-tab_area {
   background-color: #ffffff;
   padding: 0 0 60px;
