@@ -57,7 +57,7 @@ SoftUni React Course Project
 - [x] Create part
   - [x] API function
   - [x] Hook
-- [ ] Latest part
+- [x] Delete part
 - [ ] Edit part
 - [ ] Latest part
 ## 9. Refactoring

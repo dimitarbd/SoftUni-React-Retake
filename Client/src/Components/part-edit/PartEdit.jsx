@@ -6,6 +6,8 @@ import { AuthContext } from '../../contexts/AuthContext';
 export default function PartEdit() {
     const { partId } = useParams();
     const navigate = useNavigate();
+    const [error, setError] = useState('');
+
     const { isAuthenticated } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
     const [formData, setFormData] = useState({
@@ -290,7 +292,7 @@ export default function PartEdit() {
                                                     } else {
                                                         setError('');
                                                     }
-                                                    changeHandler(e);
+                                                    handleChange(e); // Use handleChange instead of changeHandler
                                                 }}
                                                 required
                                                 placeholder="Enter rating (between 1 and 5)"
@@ -318,4 +320,4 @@ export default function PartEdit() {
             {/* Edit Form Area End */}
         </>
     );
-} 
+}
