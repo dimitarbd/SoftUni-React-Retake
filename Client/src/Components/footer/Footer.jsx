@@ -115,27 +115,7 @@ export default function Footer() {
                 </div>
             </div>
         </div>
-    </div>
-    <div className="footer-bottom_area">
-        <div className="container-fluid">
-            <div className="footer-bottom_nav">
-                <div className="row">
-                    <div className="col-lg-6 col-md-6">
-                        <div className="copyright">
-                            <span><Link to="templateshub.net">Templateshub</Link></span>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 col-md-6">
-                        <div className="payment">
-                            <Link to="#">
-                                <img src="/images/footer/payment/1.png" alt="Uren's Payment Method"/>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>    
 </div>
    );
 }

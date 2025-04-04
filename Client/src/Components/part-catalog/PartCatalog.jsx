@@ -50,70 +50,8 @@ export default function PartCatalog() {
                                         </ul>
                                     </div>
                                 </div>
-                                <div className="uren-sidebar_categories">
-                                    <div className="uren-categories_title">
-                                        <h5>Price</h5>
-                                    </div>
-                                    <div className="price-filter">
-                                        <div id="slider-range"></div>
-                                        <div className="price-slider-amount">
-                                            <div className="label-input">
-                                                <label>price : </label>
-                                                <input type="text" id="amount" name="price" placeholder="Add Your Price" />
-                                            </div>
-                                            {/* <button type="button">Filter</button> */}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="uren-sidebar_categories">
-                                    <div className="uren-categories_title">
-                                        <h5>Color</h5>
-                                    </div>
-                                    <ul className="sidebar-checkbox_list">
-                                        <li>
-                                            <Link to="#">Black <span>(6)</span></Link>
-                                        </li>
-                                        <li>
-                                            <Link to="#">Blue <span>(2)</span></Link>
-                                        </li>
-                                        <li>
-                                            <Link to="#">Red <span>(3)</span></Link>
-                                        </li>
-                                        <li>
-                                            <Link to="#">Yellow <span>(0)</span></Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="uren-sidebar_categories">
-                                    <div className="uren-categories_title">
-                                        <h5>Manufacturers</h5>
-                                    </div>
-                                    <ul className="sidebar-checkbox_list">
-                                        <li>
-                                            <Link to="#">Sanai <span>(10)</span></Link>
-                                        </li>
-                                        <li>
-                                            <Link to="#">Xail <span>(2)</span></Link>
-                                        </li>
-                                        <li>
-                                            <Link to="#">Chamcham <span>(1)</span></Link>
-                                        </li>
-                                        <li>
-                                            <Link to="#">Meito <span>(3)</span></Link>
-                                        </li>
-                                        <li>
-                                            <Link to="#">Walton <span>(0)</span></Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="sidebar-banner_area">
-                                <div className="banner-item img-hover_effect">
-                                    <Link to="#">
-                                        <img src="/images/shop/1.jpg" alt="Uren's Shop Banner Image" />
-                                    </Link>
-                                </div>
-                            </div>
+                                
+                            </div>                           
                         </div>
                         <div className="col-lg-9 col-md-7 order-1 order-lg-2 order-md-2">
                             <div className="shop-toolbar">
