@@ -81,6 +81,10 @@ export default function PartDetails() {
 
     const partDeleteHandler = async () => {
         try {
+            const confirmDelete = window.confirm('Are you sure you want to delete this part?');
+            if (!confirmDelete) {
+                return; 
+            }
             const response = await partsAPI.del(partId);
             navigate('/catalog');
         } catch (err) {

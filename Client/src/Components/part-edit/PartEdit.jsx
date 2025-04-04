@@ -80,11 +80,14 @@ export default function PartEdit() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         try {
             await partsAPI.update(partId, formData);
             navigate(`/catalog/${partId}/details`);
         } catch (error) {
             console.error('Error updating part:', error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -96,9 +99,8 @@ export default function PartEdit() {
         return (
             <div className="container text-center mt-5">
                 <div className="spinner-border text-primary" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
                 <p className="mt-3">Loading part data...</p>
+                </div>
             </div>
         );
     }
@@ -306,8 +308,16 @@ export default function PartEdit() {
                                             <Link to={`/catalog/${partId}/details`} className="uren-btn uren-btn_dark">
                                                 <span>Cancel</span>
                                             </Link>
-                                            <button type="submit" className="uren-btn">
-                                                <span>Save Changes</span>
+                                            <button type="submit" className="uren-btn" disabled={isLoading}>
+                                                {isLoading? (
+                                                    <span>
+                                                        <div className="spinner-border spinner-border-sm text-light" role="status">
+                                                            <span className="visually-hidden">Loading...</span>
+                                                        </div>                                                        
+                                                    </span>
+                                                ) : (
+                                                    <span>Save Changes</span>
+                                                )}
                                             </button>
                                         </div>
                                     </div>
