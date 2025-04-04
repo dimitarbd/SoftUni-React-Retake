@@ -89,10 +89,14 @@ export default function PartDetails() {
             if (err.response) {
                 console.error('Status:', err.response.status);
                 console.error('Error data:', err.response.data);
+                if (err.response.status === 403) {
+                    alert('You are not authorized to delete this part.');
+                }
             }
         }
     }
 
+    const isOwner = part._ownerId === userId;
 
     return (
         <>
@@ -160,18 +164,18 @@ export default function PartDetails() {
                                     <div className="qty-btn_area">
                                         <ul>
                                             <li><a className="qty-cart_btn" href="cart.html">Add To Cart</a></li>
-                                            {isAuthenticated &&
+                                            {isOwner &&
                                                 <li><Link className="qty-edit_btn uren-btn_dark d-flex align-items-center" to={`/catalog/${partId}/edit`}>
                                                     <i className="fa fa-edit" style={{ marginRight: '5px' }}></i> <span>Edit Part</span>
                                                 </Link></li>
 
                                             }
-                                            {isAuthenticated &&
-                                                <li><a className="qty-edit_btn uren-btn_dark d-flex align-items-center" 
-                                                       onClick={(e) => {
-                                                           e.preventDefault(); // Prevent default anchor behavior
-                                                           partDeleteHandler();
-                                                       }}>
+                                            {isOwner &&
+                                                <li><a href="#" className="qty-edit_btn uren-btn_dark d-flex align-items-center"
+                                                    onClick={(e) => {
+                                                        e.preventDefault(); // Prevent default anchor behavior
+                                                        partDeleteHandler();
+                                                    }}>
                                                     <i className="fa fa-trash" style={{ marginRight: '5px' }}></i> <span>Delete</span>
                                                 </a></li>
 
