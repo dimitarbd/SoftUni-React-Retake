@@ -34,10 +34,16 @@ export default function PartEdit() {
                 // Make sure specifications object exists
                 if (!partData.specifications) {
                     partData.specifications = {
+                        title: '',
+                        price: '',
+                        description: '',
+                        imageUrl: '',
+                        category: '',
+                        quantity: '',
                         brand: '',
                         model: '',
                         year: '',
-                        compatibility: ''
+                        rating: '',
                     };
                 }
                 setFormData(partData);
@@ -127,9 +133,9 @@ export default function PartEdit() {
                                             <label htmlFor="name" className="mb-1">Part Name <span className="required">*</span></label>
                                             <input
                                                 type="text"
-                                                id="name"
-                                                name="name"
-                                                value={formData.name}
+                                                id="title"
+                                                name="title"
+                                                value={formData.title}
                                                 onChange={handleChange}
                                                 required
                                                 placeholder="Enter part name"
@@ -163,6 +169,7 @@ export default function PartEdit() {
                                                 rows="4"
                                                 required
                                                 placeholder="Enter detailed description"
+                                                style={{ width: '100%' }}
                                             />
                                         </div>
                                     </div>
@@ -187,9 +194,9 @@ export default function PartEdit() {
                                             <label htmlFor="stock" className="mb-1">Stock Quantity <span className="required">*</span></label>
                                             <input
                                                 type="number"
-                                                id="stock"
-                                                name="stock"
-                                                value={formData.stock}
+                                                id="quantity"
+                                                name="quantity"
+                                                value={formData.quantity}
                                                 onChange={handleChange}
                                                 required
                                                 placeholder="Enter quantity in stock"
@@ -234,9 +241,9 @@ export default function PartEdit() {
                                             <label htmlFor="specifications.brand" className="mb-1">Brand <span className="required">*</span></label>
                                             <input
                                                 type="text"
-                                                id="specifications.brand"
-                                                name="specifications.brand"
-                                                value={formData.specifications?.brand || ''}
+                                                id="brand"
+                                                name="brand"
+                                                value={formData.brand}
                                                 onChange={handleChange}
                                                 required
                                                 placeholder="Enter brand name"
@@ -245,15 +252,24 @@ export default function PartEdit() {
                                     </div>
                                     <div className="col-md-6">
                                         <div className="input-box">
-                                            <label htmlFor="specifications.model" className="mb-1">Model <span className="required">*</span></label>
+                                            <label htmlFor="specifications.year" className="mb-1">Year <span className="required">*</span></label>
                                             <input
-                                                type="text"
-                                                id="specifications.model"
-                                                name="specifications.model"
-                                                value={formData.specifications?.model || ''}
-                                                onChange={handleChange}
+                                                type="number"
+                                                id="year"
+                                                name="year"
+                                                value={formData.year}
+                                                onChange={(e) => {
+                                                    const value = e.target.value;
+                                                    const currentYear = new Date().getFullYear();
+                                                    if (value < 1900 || value > currentYear) {
+                                                        setError(`Year must be between 1900 and ${currentYear}`);
+                                                    } else {
+                                                        setError('');
+                                                    }
+                                                    changeHandler(e);
+                                                }}
                                                 required
-                                                placeholder="Enter model name"
+                                                placeholder="Enter year (e.g., 2022)"
                                             />
                                         </div>
                                     </div>
@@ -261,29 +277,23 @@ export default function PartEdit() {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <div className="input-box">
-                                            <label htmlFor="specifications.year" className="mb-1">Year <span className="required">*</span></label>
+                                            <label htmlFor="rating" className="mb-1">Rating <span className="required">*</span></label>
                                             <input
                                                 type="number"
-                                                id="specifications.year"
-                                                name="specifications.year"
-                                                value={formData.specifications?.year || ''}
-                                                onChange={handleChange}
+                                                id="rating"
+                                                name="rating"
+                                                value={formData.rating}
+                                                onChange={(e) => {
+                                                    const value = e.target.value;
+                                                    if (value < 1 || value > 5) {
+                                                        setError('Rating must be between 1 and 5');
+                                                    } else {
+                                                        setError('');
+                                                    }
+                                                    changeHandler(e);
+                                                }}
                                                 required
-                                                placeholder="Enter year (e.g., 2022)"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="input-box">
-                                            <label htmlFor="specifications.compatibility" className="mb-1">Compatibility <span className="required">*</span></label>
-                                            <input
-                                                type="text"
-                                                id="specifications.compatibility"
-                                                name="specifications.compatibility"
-                                                value={formData.specifications?.compatibility || ''}
-                                                onChange={handleChange}
-                                                placeholder="e.g., 'All Toyota models 2015-2020'"
-                                                required
+                                                placeholder="Enter rating (between 1 and 5)"
                                             />
                                         </div>
                                     </div>

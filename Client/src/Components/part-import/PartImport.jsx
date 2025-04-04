@@ -96,7 +96,7 @@ export default function PartImport() {
                                                             type="text"
                                                             id="title"
                                                             name="title"
-                                                            value={formData.name}
+                                                            value={formData.title}
                                                             onChange={changeHandler}
                                                             required
                                                             placeholder="Enter part name"

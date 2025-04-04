@@ -178,16 +178,16 @@ export default function Slider() {
                 <div className="row banner-wrap">
                     <div className="col-lg-12 col-md-6">
                         <div className="slider-banner banner-item img-hover_effect">
-                            <a href="shop-left-sidebar.html">
+                            <Link to="/catalog">
                                 <img className="img-full" src="/images/banner/2-1.jpg" alt="Uren's Banner" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="col-lg-12 col-md-6">
                         <div className="slider-banner-2 banner-item img-hover_effect">
-                            <a href="shop-left-sidebar.html">
+                            <Link to="/catalog">
                                 <img className="img-full" src="/images/banner/2-2.jpg" alt="Uren's Banner" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

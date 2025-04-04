@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useGetOnePart } from "../../hooks/useParts";
 import { useForm } from "../../hooks/useForm";
-import { useCreateComment, useGetAllComments } from "../../hooks/useComments";
+import { useCreateComment, useDeleteComment, useGetAllComments } from "../../hooks/useComments";
 import { useAuthcontext } from "../../contexts/AuthContext";
 import commentsAPI from "../../api/comments-api";
 
@@ -231,7 +231,7 @@ export default function PartDetails() {
                                                                                     </button>
                                                                                     <button
                                                                                         className="uren-btn uren-btn_sm uren-btn_dark"
-                                                                                        onClick={() => handleDeleteComment(comment._id)}
+                                                                                        onClick={useDeleteComment(comment._id)}
                                                                                     >
                                                                                         Delete
                                                                                     </button>
