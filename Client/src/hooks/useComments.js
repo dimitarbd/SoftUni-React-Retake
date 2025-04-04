@@ -27,7 +27,6 @@ export function useGetAllComments(partId) {
             }
         })();
     }, [partId]);
-    console.log(comments);
 
     return [comments, setComments];
 

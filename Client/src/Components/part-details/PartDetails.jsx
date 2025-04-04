@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 import { useGetOnePart } from "../../hooks/useParts";
@@ -6,6 +6,7 @@ import { useForm } from "../../hooks/useForm";
 import { useCreateComment, useDeleteComment, useGetAllComments } from "../../hooks/useComments";
 import { useAuthcontext } from "../../contexts/AuthContext";
 import commentsAPI from "../../api/comments-api";
+import partsAPI from "../../api/parts-api";
 
 const initialValues = {
     text: '',
@@ -17,11 +18,12 @@ const initialValues = {
 export default function PartDetails() {
     const { partId } = useParams();
     const [comments, setComments] = useGetAllComments(partId);
-    
+    const navigate = useNavigate();
+
     const createComment = useCreateComment();
+    const deleteComment = useDeleteComment();
     const [part] = useGetOnePart(partId);
     const { isAuthenticated, userId } = useAuthcontext();
-    console.log('Current User ID:', userId);
     const {
         changeHandler,
         submitHandler,
@@ -34,10 +36,8 @@ export default function PartDetails() {
                 .split('/')
                 .map((part, index) => (index === 2 ? part.slice(-2) : part))
                 .join('/');
-            
             // Create the new comment
             const newComment = await createComment(partId, text, rating, currentDate);
-            console.log('New Comment:', newComment);
 
             // Fetch the updated comments directly from the API
             const updatedComments = await commentsAPI.getAll(partId);
@@ -48,7 +48,24 @@ export default function PartDetails() {
         } catch (error) {
             console.error("Error creating comment:", error);
         }
-    });    
+    });
+
+    const handleDeleteComment = async (commentId) => {
+        try {
+            await deleteComment(commentId);
+            // Update the comments list after deletion
+            const updatedComments = await commentsAPI.getAll(partId);
+            setComments(updatedComments);
+        } catch (error) {
+            console.error("Error deleting comment:", error);
+        }
+    };
+
+    const handleEditComment = (commentId, text, rating) => {
+        // Implement your edit comment functionality here
+        console.log("Edit comment:", commentId, text, rating);
+        // This is just a placeholder - you'll need to implement the actual edit logic
+    };
 
     const renderRating = (rating) => {
         const stars = [];
@@ -62,8 +79,20 @@ export default function PartDetails() {
         return stars;
     };
 
-    // const isOwner = userId === part._ownerId;
-    
+    const partDeleteHandler = async () => {
+        try {
+            const response = await partsAPI.del(partId);
+            navigate('/catalog');
+        } catch (err) {
+            console.error('Delete error details:', err);
+            // If the error object has a response property (common with axios)
+            if (err.response) {
+                console.error('Status:', err.response.status);
+                console.error('Error data:', err.response.data);
+            }
+        }
+    }
+
 
     return (
         <>
@@ -135,10 +164,19 @@ export default function PartDetails() {
                                                 <li><Link className="qty-edit_btn uren-btn_dark d-flex align-items-center" to={`/catalog/${partId}/edit`}>
                                                     <i className="fa fa-edit" style={{ marginRight: '5px' }}></i> <span>Edit Part</span>
                                                 </Link></li>
+
                                             }
-                                            <li><a className="qty-wishlist_btn" href="wishlist.html" data-toggle="tooltip" title="Add To Wishlist"><i className="ion-android-favorite-outline"></i></a>
-                                            </li>
-                                            <li><a className="qty-compare_btn" href="compare.html" data-toggle="tooltip" title="Compare This Product"><i className="ion-ios-shuffle-strong"></i></a></li>
+                                            {isAuthenticated &&
+                                                <li><a className="qty-edit_btn uren-btn_dark d-flex align-items-center" 
+                                                       onClick={(e) => {
+                                                           e.preventDefault(); // Prevent default anchor behavior
+                                                           partDeleteHandler();
+                                                       }}>
+                                                    <i className="fa fa-trash" style={{ marginRight: '5px' }}></i> <span>Delete</span>
+                                                </a></li>
+
+                                            }
+
                                         </ul>
                                     </div>
                                     <div className="uren-tag-line">
@@ -231,7 +269,7 @@ export default function PartDetails() {
                                                                                     </button>
                                                                                     <button
                                                                                         className="uren-btn uren-btn_sm uren-btn_dark"
-                                                                                        onClick={useDeleteComment(comment._id)}
+                                                                                        onClick={() => handleDeleteComment(comment._id)}
                                                                                     >
                                                                                         Delete
                                                                                     </button>

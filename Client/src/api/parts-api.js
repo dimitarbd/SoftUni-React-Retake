@@ -27,11 +27,14 @@ export const create = (partData) => requester.post(BASE_URL, partData);
 
 export const update = (partId, partData) => requester.put(`${BASE_URL}/${partId}`, partData);
 
+export const del = (partId) => requester.del(`${BASE_URL}/${partId}`) 
+
 const partsAPI = {
     getAll,
     getOne,
     create,
-    update
+    update,
+    del
 };
 
 export default partsAPI;
