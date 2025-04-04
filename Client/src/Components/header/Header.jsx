@@ -150,7 +150,7 @@ export default function Header() {
                                 </nav>
                             </div>
                         </div>
-                        <div className="custom-setting_col col-12 d-none d-lg-block">
+                        {isAuthenticated && (<div className="custom-setting_col col-12 d-none d-lg-block">
                             <div className="ht-right_area">
                                 <div className="ht-menu">
                                     <ul>
@@ -159,7 +159,7 @@ export default function Header() {
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div>)}
                         <div className="custom-search_col d-none d-md-block d-lg-none">
                             <div className="hm-form_area">
                                 <form action="#" className="hm-searchbox">

@@ -48,7 +48,7 @@ export default function MyAccount() {
                                     <p>Hello <b>Edwin Adams</b> (not Edwin Adams? <a href="login-register.html">Sign
                                             out</a>)</p>
                                     <p>From your account dashboard you can view your recent orders, manage your shipping and
-                                        billing addresses and <a href="javascript:void(0)">edit your password and account details</a>.</p>
+                                        billing addresses and <a href="#" onClick={(e) => e.preventDefault()}>edit your password and account details</a>.</p>
                                 </div>
                             </div>
                             <div className="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
@@ -65,19 +65,19 @@ export default function MyAccount() {
                                                     <th></th>
                                                 </tr>
                                                 <tr>
-                                                    <td><a className="account-order-id" href="javascript:void(0)">#5364</a></td>
+                                                    <td><a className="account-order-id" href="#" onClick={(e) => e.preventDefault()}>#{5364}</a></td>
                                                     <td>Mar 27, 2019</td>
                                                     <td>On Hold</td>
                                                     <td>£162.00 for 2 items</td>
-                                                    <td><a href="javascript:void(0)" className="uren-btn uren-btn_dark uren-btn_sm"><span>View</span></a>
+                                                    <td><a href="#" onClick={(e) => e.preventDefault()} className="uren-btn uren-btn_dark uren-btn_sm"><span>View</span></a>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><a className="account-order-id" href="javascript:void(0)">#5356</a></td>
+                                                    <td><a className="account-order-id" href="#" onClick={(e) => e.preventDefault()}>#{5356}</a></td>
                                                     <td>Mar 27, 2019</td>
                                                     <td>On Hold</td>
                                                     <td>£162.00 for 2 items</td>
-                                                    <td><a href="javascript:void(0)" className="uren-btn uren-btn_dark uren-btn_sm"><span>View</span></a>
+                                                    <td><a href="#" onClick={(e) => e.preventDefault()} className="uren-btn uren-btn_dark uren-btn_sm"><span>View</span></a>
                                                     </td>
                                                 </tr>
                                             </tbody>

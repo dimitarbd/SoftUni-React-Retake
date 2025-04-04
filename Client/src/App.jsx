@@ -15,6 +15,7 @@ import PartCatalog from './Components/part-catalog/PartCatalog';
 import PartImport from './Components/part-import/PartImport';
 import PartEdit from './Components/part-edit/PartEdit';
 import Logout from './Components/logout/Logout';
+import MyAccount from './Components/my-account/My-Account';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                     <Route path="/catalog/:partId/edit" element={<PartEdit />} />
                     <Route path="/catalog/import" element={<PartImport />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/my-account" element={<MyAccount />} />
                 </Routes>
 
                 <Footer />
