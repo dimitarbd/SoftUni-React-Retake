@@ -14,7 +14,8 @@ export const getAll = async () => {
             price: part.price,
             ownerId: part.ownerId,
             createdAt: part.createdAt,
-            rating: part.rating
+            rating: part.rating,
+            category: part.category
         };
     }
     );

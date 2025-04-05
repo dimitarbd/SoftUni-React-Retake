@@ -1,11 +1,61 @@
 import { Link } from 'react-router-dom';
 import { useGetAllParts } from '../../hooks/useParts';
+import { useState, useMemo } from 'react';
 
 import PartCatalogItem from './part-catalog-item/PartCatalogItem';
 
+const ITEMS_PER_PAGE = 6;
+
+const categories = [
+    'Engine and Drivetrain',
+    'Suspension and Steering',
+    'Braking System',
+    'Electrical System',
+    'Exhaust System',
+    'Cooling System',
+    'Body and Exterior',
+    'Interior and Comfort',
+    'Wheels and Tires',
+    'Fuel System'
+];
 
 export default function PartCatalog() {
     const [parts] = useGetAllParts();
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const filteredParts = useMemo(() => {
+        if (!selectedCategory) return parts;
+        return parts.filter(part => part.category === selectedCategory);
+    }, [parts, selectedCategory]);
+
+    const getCategoryCount = (category) => {
+        return parts.filter(part => part.category === category).length;
+    };
+
+    // Calculate pagination
+    const totalPages = Math.ceil(filteredParts.length / ITEMS_PER_PAGE);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const paginatedParts = filteredParts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    const renderPagination = () => {
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <li key={i} className={currentPage === i ? 'active' : ''}>
+                    <Link to="#" onClick={(e) => {
+                        e.preventDefault();
+                        handlePageChange(i);
+                    }}>{i}</Link>
+                </li>
+            );
+        }
+        return pages;
+    };
 
     return (
         <>
@@ -36,16 +86,29 @@ export default function PartCatalog() {
                                     <div className="module-body">
                                         <ul className="module-list_item">
                                             <li>
-                                                <Link to="#">Engine and Drivetrain <span>(12)</span></Link>
-                                                <Link to="#">Suspension and Steering <span>(0)</span></Link>
-                                                <Link to="#">Braking System <span>(0)</span></Link>
-                                                <Link to="#">Electrical System <span>(0)</span></Link>
-                                                <Link to="#">Exhaust System <span>(12)</span></Link>
-                                                <Link to="#">Cooling System <span>(12)</span></Link>
-                                                <Link to="#">Body and Exterior <span>(16)</span></Link>
-                                                <Link to="#">Interior and Comfort <span>(2)</span></Link>
-                                                <Link to="#">Wheels and Tires <span>(0)</span></Link>
-                                                <Link to="#">Fuel System <span>(9)</span></Link>
+                                                <Link 
+                                                    to="#" 
+                                                    onClick={() => {
+                                                        setSelectedCategory('');
+                                                        setCurrentPage(1);
+                                                    }}
+                                                    className={!selectedCategory ? 'active' : ''}
+                                                >
+                                                    All Categories <span>({parts.length})</span>
+                                                </Link>
+                                                {categories.map(category => (
+                                                    <Link 
+                                                        key={category}
+                                                        to="#" 
+                                                        onClick={() => {
+                                                            setSelectedCategory(category);
+                                                            setCurrentPage(1);
+                                                        }}
+                                                        className={selectedCategory === category ? 'active' : ''}
+                                                    >
+                                                        {category} <span>({getCategoryCount(category)})</span>
+                                                    </Link>
+                                                ))}
                                             </li>
                                         </ul>
                                     </div>
@@ -91,12 +154,10 @@ export default function PartCatalog() {
                                 </div>
                             </div>
                             <div className="shop-product-wrap grid gridview-3 img-hover-effect_area row">
-
-                                {parts.length > 0
-                               ? parts.map(part => <PartCatalogItem key={part._id} {...part} />)
-                               :<p>Loading...</p>
-                            }
-                                
+                                {paginatedParts.length > 0
+                                    ? paginatedParts.map(part => <PartCatalogItem key={part._id} {...part} />)
+                                    : <p>No parts found in this category.</p>
+                                }
                             </div>
                             <div className="row">
                                 <div className="col-lg-12">
@@ -104,12 +165,21 @@ export default function PartCatalog() {
                                         <div className="row">
                                             <div className="col-lg-12">
                                                 <ul className="uren-pagination-box primary-color">
-                                                    <li className="active"><Link to="#">1</Link></li>
-                                                    <li><Link to="#">2</Link></li>
-                                                    <li><Link to="#">3</Link></li>
-                                                    <li><Link to="#">4</Link></li>
-                                                    <li><Link to="#">5</Link></li>
-                                                    <li><Link className="Next" to="#">Next</Link></li>
+                                                    {renderPagination()}
+                                                    {currentPage < totalPages && (
+                                                        <li>
+                                                            <Link 
+                                                                className="Next" 
+                                                                to="#" 
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    handlePageChange(currentPage + 1);
+                                                                }}
+                                                            >
+                                                                Next
+                                                            </Link>
+                                                        </li>
+                                                    )}
                                                 </ul>
                                             </div>
                                         </div>
@@ -121,7 +191,6 @@ export default function PartCatalog() {
                 </div>
             </div>
             {/* <!-- Uren's Shop Left Sidebar Area End Here --> */}
-
         </>
     )
 };
