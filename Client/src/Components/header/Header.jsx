@@ -1,17 +1,32 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuthcontext } from '../../contexts/AuthContext';
+import { useCategory } from '../../contexts/CategoryContext';
+import { useSearch } from '../../contexts/SearchContext';
+
+const categories = [
+    'Engine and Drivetrain',
+    'Suspension and Steering',
+    'Braking System',
+    'Electrical System',
+    'Exhaust System',
+    'Cooling System',
+    'Body and Exterior',
+    'Interior and Comfort',
+    'Wheels and Tires',
+    'Fuel System'
+];
 
 export default function Header() {
     const { isAuthenticated } = useAuthcontext();
-
+    const { setSelectedCategory } = useCategory();
+    const { setSearchQuery } = useSearch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const categoryHeading = document.querySelector('.category-heading');
         const categoryMenuList = document.getElementById('cate-toggle');
-
-
 
         if (categoryHeading && categoryMenuList) {
             categoryHeading.addEventListener('click', () => {
@@ -31,6 +46,19 @@ export default function Header() {
         };
     }, []);
 
+    const handleCategoryClick = (category) => {
+        setSelectedCategory(category);
+        navigate('/catalog');
+    };
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const searchInput = e.target.querySelector('input[type="text"]');
+        const searchValue = searchInput.value.trim();
+        setSearchQuery(searchValue);
+        navigate('/catalog');
+    };
+
     return (
         <header className="header-main_area header-main_area-2 bg--black">
             <div className="header-middle_area">
@@ -45,24 +73,11 @@ export default function Header() {
                         </div>
                         <div className="col-xl-5 col-lg-6 d-none d-lg-block">
                             <div className="hm-form_area">
-                                <form action="#" className="hm-searchbox">
-                                    <select className="nice-select select-search-category">
-                                        <option defaultValue="">All Categories</option>
-                                        <option formvalue="">Engine and Drivetrain</option>
-                                        <option formvalue="">Suspension and Steering</option>
-                                        <option formvalue="">Braking System</option>
-                                        <option formvalue="">Electrical System</option>
-                                        <option formvalue="">Exhaust System</option>
-                                        <option formvalue="">Cooling System</option>
-                                        <option formvalue="">Body and Exterior</option>
-                                        <option formvalue="">Interior and Comfort</option>
-                                        <option formvalue="">Wheels and Tires</option>
-                                        <option formvalue="">Fuel System</option>
-
-                                    </select>
+                                <form onSubmit={handleSearch} className="hm-searchbox">
                                     <input type="text" placeholder="Enter your search key ..." />
-                                    <button className="header-search_btn" type="submit"><i
-                                        className="ion-ios-search-strong"><span>Search</span></i></button>
+                                    <button className="header-search_btn" type="submit">
+                                        <i className="ion-ios-search-strong"><span>Search</span></i>
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -103,29 +118,26 @@ export default function Header() {
                                 <div className="category-heading">
                                     <h2 className="categories-toggle">
                                         <span>Shop By</span>
-                                        <span>Department</span>
+                                        <span>Category</span>
                                     </h2>
                                 </div>
                                 <div id="cate-toggle" className="category-menu-list" style={{ display: 'none' }}>
                                     <ul>
-                                        <li><Link to="shop-left-sidebar.html">Engine and Drivetrain</Link>
-                                        </li>
-                                        <li><Link to="shop-left-sidebar.html">Suspension and Steering</Link>
-                                        </li>
-                                        <li><Link to="shop-left-sidebar.html">Braking System</Link>
-                                        </li>
-                                        <li><Link to="shop-left-sidebar.html">Electrical System</Link>
-                                        </li>
-                                        <li><Link to="shop-left-sidebar.html">Exhaust System</Link>
-                                        </li>
-                                        <li><Link to="shop-left-sidebar.html">Cooling System</Link>
-                                        </li>
-                                        <li><Link to="shop-left-sidebar.html">Body and Exterior</Link></li>
-                                        <li><Link to="shop-left-sidebar.html">Interior and Comfort</Link></li>
-                                        <li><Link to="shop-left-sidebar.html">Wheels and Tires</Link></li>
-                                        <li><Link to="shop-left-sidebar.html">Fuel System</Link></li>
-                                        <li className="rx-child"><Link to="shop-left-sidebar.html">Uncategorized</Link></li>
-                                        <li className="rx-child"><Link to="shop-left-sidebar.html">Appliances</Link></li>
+                                        {categories.map(category => (
+                                            <li key={category}>
+                                                <Link 
+                                                    to="#" 
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        handleCategoryClick(category);
+                                                    }}
+                                                >
+                                                    {category}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                        <li className="rx-child"><Link to="#">Uncategorized</Link></li>
+                                        <li className="rx-child"><Link to="#">Appliances</Link></li>
                                         <li className="rx-parent">
                                             <Link className="rx-show">Collapse</Link>
                                         </li>
@@ -162,23 +174,11 @@ export default function Header() {
                         </div>)}
                         <div className="custom-search_col d-none d-md-block d-lg-none">
                             <div className="hm-form_area">
-                                <form action="#" className="hm-searchbox">
-                                    <select className="nice-select select-search-category">
-                                        <option formvalue="">All Categories</option>
-                                        <option formvalue="">Engine and Drivetrain</option>
-                                        <option formvalue="">Suspension and Steering</option>
-                                        <option formvalue="">Braking System</option>
-                                        <option formvalue="">Electrical System</option>
-                                        <option formvalue="">Exhaust System</option>
-                                        <option formvalue="">Cooling System</option>
-                                        <option formvalue="">Body and Exterior</option>
-                                        <option formvalue="">Interior and Comfort</option>
-                                        <option formvalue="">Wheels and Tires</option>
-                                        <option formvalue="">Fuel System</option>
-                                    </select>
+                                <form onSubmit={handleSearch} className="hm-searchbox">
                                     <input type="text" placeholder="Enter your search key ..." />
-                                    <button className="header-search_btn" type="submit"><i
-                                        className="ion-ios-search-strong"><span>Search</span></i></button>
+                                    <button className="header-search_btn" type="submit">
+                                        <i className="ion-ios-search-strong"><span>Search</span></i>
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -303,7 +303,7 @@ export default function Header() {
                     <div className="container">
                         <Link to="#" className="btn-close" onClick={(e) => e.preventDefault()}><i className="ion-android-close"></i></Link>
                         <div className="offcanvas-inner_search">
-                            <form action="#" className="inner-searchbox">
+                            <form onSubmit={handleSearch} className="inner-searchbox">
                                 <input type="text" placeholder="Search for item..." />
                                 <button className="search_btn" type="submit" onClick={(e) => e.preventDefault()}><i className="ion-ios-search-strong"></i></button>
                             </form>

@@ -8,12 +8,12 @@ export const getAll = async () => {
     const parts = result.map((part) => {
         return {
             _id: part._id,
-            name: part.name,
+            title: part.title,
             description: part.description,
             imageUrl: part.imageUrl,
             price: part.price,
-            ownerId: part.ownerId,
-            createdAt: part.createdAt,
+            ownerId: part._ownerId,
+            createdAt: part._createdOn,
             rating: part.rating,
             category: part.category
         };

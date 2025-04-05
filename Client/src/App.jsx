@@ -3,6 +3,8 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { Routes, Route } from 'react-router-dom';
 import { AuthContextProvider } from './contexts/AuthContext';
+import { CategoryProvider } from './contexts/CategoryContext';
+import { SearchProvider } from './contexts/SearchContext';
 
 import Home from './Components/home/Home';
 import Footer from "./Components/footer/Footer"
@@ -22,26 +24,30 @@ function App() {
 
     return (
         <AuthContextProvider>
-            <div className="main-wrapper">
+            <CategoryProvider>
+                <SearchProvider>
+                    <div className="main-wrapper">
 
-                <Header />
+                        <Header />
 
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/logout" element={<Logout />} />
-                    <Route path="/catalog" element={<PartCatalog />} />
-                    <Route path="/catalog/:partId/details" element={<PartDetails />} />
-                    <Route path="/catalog/:partId/edit" element={<PartEdit />} />
-                    <Route path="/catalog/import" element={<PartImport />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/my-account" element={<MyAccount />} />
-                </Routes>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/catalog" element={<PartCatalog />} />
+                            <Route path="/catalog/:partId/details" element={<PartDetails />} />
+                            <Route path="/catalog/:partId/edit" element={<PartEdit />} />
+                            <Route path="/catalog/import" element={<PartImport />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/my-account" element={<MyAccount />} />
+                        </Routes>
 
-                <Footer />
+                        <Footer />
 
-            </div>
+                    </div>
+                </SearchProvider>
+            </CategoryProvider>
         </AuthContextProvider>
     )
 }

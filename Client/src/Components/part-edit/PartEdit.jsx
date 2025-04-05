@@ -250,7 +250,7 @@ export default function PartEdit() {
                                                 value={formData.brand}
                                                 onChange={handleChange}
                                                 required
-                                                placeholder="Enter brand name"
+                                                placeholder="Enter brand"
                                             />
                                         </div>
                                     </div>
@@ -270,7 +270,7 @@ export default function PartEdit() {
                                                     } else {
                                                         setError('');
                                                     }
-                                                    changeHandler(e);
+                                                    handleChange(e);
                                                 }}
                                                 required
                                                 placeholder="Enter year (e.g., 2022)"
@@ -294,7 +294,7 @@ export default function PartEdit() {
                                                     } else {
                                                         setError('');
                                                     }
-                                                    handleChange(e); // Use handleChange instead of changeHandler
+                                                    handleChange(e);
                                                 }}
                                                 required
                                                 placeholder="Enter rating (between 1 and 5)"

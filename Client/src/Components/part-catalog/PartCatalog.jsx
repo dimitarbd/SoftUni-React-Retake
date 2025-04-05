@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useGetAllParts } from '../../hooks/useParts';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useCategory } from '../../contexts/CategoryContext';
+import { useSearch } from '../../contexts/SearchContext';
 
 import PartCatalogItem from './part-catalog-item/PartCatalogItem';
 
@@ -21,13 +23,33 @@ const categories = [
 
 export default function PartCatalog() {
     const [parts] = useGetAllParts();
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const { selectedCategory, setSelectedCategory } = useCategory();
+    const { searchQuery } = useSearch();
     const [currentPage, setCurrentPage] = useState(1);
 
+    // Reset to first page when category or search changes
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [selectedCategory, searchQuery]);
+
     const filteredParts = useMemo(() => {
-        if (!selectedCategory) return parts;
-        return parts.filter(part => part.category === selectedCategory);
-    }, [parts, selectedCategory]);
+        let filtered = parts;
+        
+        // Filter by category
+        if (selectedCategory) {
+            filtered = filtered.filter(part => part.category === selectedCategory);
+        }
+        
+        // Filter by search query (only by title)
+        if (searchQuery) {
+            const query = searchQuery.toLowerCase();
+            filtered = filtered.filter(part => 
+                part.title.toLowerCase().includes(query)
+            );
+        }
+        
+        return filtered;
+    }, [parts, selectedCategory, searchQuery]);
 
     const getCategoryCount = (category) => {
         return parts.filter(part => part.category === category).length;
@@ -88,10 +110,7 @@ export default function PartCatalog() {
                                             <li>
                                                 <Link 
                                                     to="#" 
-                                                    onClick={() => {
-                                                        setSelectedCategory('');
-                                                        setCurrentPage(1);
-                                                    }}
+                                                    onClick={() => setSelectedCategory('')}
                                                     className={!selectedCategory ? 'active' : ''}
                                                 >
                                                     All Categories <span>({parts.length})</span>
@@ -100,10 +119,7 @@ export default function PartCatalog() {
                                                     <Link 
                                                         key={category}
                                                         to="#" 
-                                                        onClick={() => {
-                                                            setSelectedCategory(category);
-                                                            setCurrentPage(1);
-                                                        }}
+                                                        onClick={() => setSelectedCategory(category)}
                                                         className={selectedCategory === category ? 'active' : ''}
                                                     >
                                                         {category} <span>({getCategoryCount(category)})</span>
@@ -116,43 +132,7 @@ export default function PartCatalog() {
                                 
                             </div>                           
                         </div>
-                        <div className="col-lg-9 col-md-7 order-1 order-lg-2 order-md-2">
-                            <div className="shop-toolbar">
-                                <div className="product-view-mode">
-                                    <Link className="grid-1" data-target="gridview-1" data-toggle="tooltip" data-placement="top" title="1">1</Link>
-                                    <Link className="grid-2" data-target="gridview-2" data-toggle="tooltip" data-placement="top" title="2">2</Link>
-                                    <Link className="active grid-3" data-target="gridview-3" data-toggle="tooltip" data-placement="top" title="3">3</Link>
-                                    <Link className="grid-4" data-target="gridview-4" data-toggle="tooltip" data-placement="top" title="4">4</Link>
-                                    <Link className="grid-5" data-target="gridview-5" data-toggle="tooltip" data-placement="top" title="5">5</Link>
-                                    <Link className="list" data-target="listview" data-toggle="tooltip" data-placement="top" title="List"><i className="fa fa-th-list"></i></Link>
-                                </div>
-                                <div className="product-item-selection_area">
-                                    <div className="product-short">
-                                        <label className="select-label">Sort By:</label>
-                                        <select className="myniceselect nice-select">
-                                            <option value="1">Default</option>
-                                            <option value="2">Name, A to Z</option>
-                                            <option value="3">Name, Z to A</option>
-                                            <option value="4">Price, low to high</option>
-                                            <option value="5">Price, high to low</option>
-                                            <option value="5">Rating (Highest)</option>
-                                            <option value="5">Rating (Lowest)</option>
-                                            <option value="5">Model (A - Z)</option>
-                                            <option value="5">Model (Z - A)</option>
-                                        </select>
-                                    </div>
-                                    <div className="product-showing">
-                                        <label className="select-label">Show:</label>
-                                        <select className="myniceselect short-select nice-select">
-                                            <option value="1">15</option>
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="col-lg-9 col-md-7 order-1 order-lg-2 order-md-2">                           
                             <div className="shop-product-wrap grid gridview-3 img-hover-effect_area row">
                                 {paginatedParts.length > 0
                                     ? paginatedParts.map(part => <PartCatalogItem key={part._id} {...part} />)
