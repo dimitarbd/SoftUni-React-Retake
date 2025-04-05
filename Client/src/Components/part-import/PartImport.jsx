@@ -10,7 +10,7 @@ export default function PartImport() {
 
     const { isAuthenticated } = useContext(AuthContext);
     const [formData, setFormData] = useState({
-        title: '',
+        name: '',
         price: '',
         description: '',
         imageUrl: '',
@@ -91,12 +91,12 @@ export default function PartImport() {
                                             <div className="row">
                                                 <div className="col-md-6">
                                                     <div className="input-box">
-                                                        <label htmlFor="title" className="mb-1">Part Name <span className="required">*</span></label>
+                                                        <label htmlFor="name" className="mb-1">Part Name <span className="required">*</span></label>
                                                         <input
                                                             type="text"
-                                                            id="title"
-                                                            name="title"
-                                                            value={formData.title}
+                                                            id="name"
+                                                            name="name"
+                                                            value={formData.name}
                                                             onChange={changeHandler}
                                                             required
                                                             placeholder="Enter part name"
@@ -254,7 +254,9 @@ export default function PartImport() {
                                                                 changeHandler(e);
                                                             }}
                                                             required
-                                                            placeholder="Enter rating (between 1 and 5)"
+                                                            min="1"
+                                                            max="5"
+                                                            placeholder="Enter rating (1-5)"
                                                         />
                                                     </div>
                                                 </div>

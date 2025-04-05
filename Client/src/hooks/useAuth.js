@@ -27,12 +27,11 @@ export const useRegister = () => {
 }
 
 export const useLogout = () => {
-    const { logout: localLogout } = useAuthcontext();
+    const { changeAuthState } = useAuthcontext();
 
     const logoutHandler = async () => {
         await logout();
-        localLogout();
+        changeAuthState(null);
     };
-
     return logoutHandler;
 }
