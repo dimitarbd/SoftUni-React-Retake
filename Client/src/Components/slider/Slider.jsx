@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { useCategory } from '../../contexts/CategoryContext';
 
 import $ from 'jquery';
 import 'slick-carousel/slick/slick';
 
 
 export default function Slider() {
+   const { setSelectedCategory } = useCategory();
+
    useEffect(() => {
      // First remove any existing slick initialization to prevent duplicates
      if ($('.main-slider').hasClass('slick-initialized')) {
@@ -143,6 +146,10 @@ export default function Slider() {
      };
    }, []);
 
+   const handleCategoryClick = (category) => {
+     setSelectedCategory(category);
+   };
+
 return (
  <div className="uren-slider_area uren-slider_area-2">
  <div className="container-fluid">
@@ -156,7 +163,7 @@ return (
                        <h3>Interior &amp; Comfort</h3>
                        <h4>Starting at <span>$99.00</span></h4>
                        <div className="uren-btn-ps_left slide-btn">
-                          <Link className="uren-btn" to="/catalog">Read More</Link>
+                          <Link className="uren-btn" to="/catalog" onClick={() => handleCategoryClick('Interior and Comfort')}>Read More</Link>
                        </div>
                     </div>
                 </div>
@@ -168,7 +175,7 @@ return (
                        <h3>Wheels &amp; Tires</h3>
                        <h4>Sale up to 20% off</h4>
                        <div className="uren-btn-ps_left slide-btn">
-                          <Link className="uren-btn" to="/catalog">Read More</Link>
+                         <Link className="uren-btn" to="/catalog" onClick={() => handleCategoryClick('Wheels and Tires')}>Read More</Link>
                        </div>
                     </div>
                 </div>

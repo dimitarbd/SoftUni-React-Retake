@@ -102,7 +102,7 @@ export default function Header() {
                                         </Link>
                                     </li>
                                     <li className="contact-us_wrap">
-                                        <Link to="tel://+123123321345"><i className="ion-android-call"></i>+123 321 345</Link>
+                                        <span style={{ color: 'white', fontSize: '1.5em' }}><i className="ion-android-call"></i>+123 321 345</span>
                                     </li>
                                 </ul>
                             </div>
@@ -235,7 +235,7 @@ export default function Header() {
                                         </Link>
                                     </li>
                                     <li className="contact-us_wrap">
-                                        <Link to="tel://+123123321345"><i className="ion-android-call"></i>+123 321 345</Link>
+                                        <span style={{ color: 'white', fontSize: '1.5em' }}><i className="ion-android-call"></i>+123 321 345</span>
                                     </li>
                                 </ul>
                             </div>
