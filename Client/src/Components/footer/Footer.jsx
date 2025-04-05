@@ -57,61 +57,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="col-lg-8">
-                    <div className="footer-widgets_area">
-                        <div className="row">
-                            <div className="col-lg-3 col-md-6">
-                                <div className="footer-widgets_title">
-                                    <h3>Information</h3>
-                                </div>
-                                <div className="footer-widgets">
-                                    <ul>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>About Us</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Delivery Information</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Privacy Policy</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Terms & Conditions</Link></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-6">
-                                <div className="footer-widgets_title">
-                                    <h3>Customer Service</h3>
-                                </div>
-                                <div className="footer-widgets">
-                                    <ul>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Contact Us</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Returns</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Site Map</Link></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-6">
-                                <div className="footer-widgets_title">
-                                    <h3>Extras</h3>
-                                </div>
-                                <div className="footer-widgets">
-                                    <ul>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>About Us</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Delivery Information</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Privacy Policy</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Terms & Conditions</Link></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-6">
-                                <div className="footer-widgets_title">
-                                    <h3>My Account</h3>
-                                </div>
-                                <div className="footer-widgets">
-                                    <ul>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>My Account</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Order History</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Wish List</Link></li>
-                                        <li><Link to="#" onClick={(e) => e.preventDefault()}>Newsletter</Link></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
