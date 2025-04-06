@@ -49,6 +49,17 @@ export default function Slider() {
          }
        }
        
+       // Handle duplicate dots - keep only the first set
+       const dotsContainers = document.querySelectorAll('.main-slider .slick-dots');
+       if (dotsContainers.length > 1) {
+         // Keep the first one, remove the rest
+         for (let i = 1; i < dotsContainers.length; i++) {
+           if (dotsContainers[i] && dotsContainers[i].parentNode) {
+             dotsContainers[i].parentNode.removeChild(dotsContainers[i]);
+           }
+         }
+       }
+       
        // Ensure proper styling for the remaining arrows and hide text labels
        const remainingNextArrow = document.querySelector('.main-slider .slick-next');
        const remainingPrevArrow = document.querySelector('.main-slider .slick-prev');
@@ -126,6 +137,33 @@ export default function Slider() {
          .main-slider .slick-arrow i {
            color: white !important;
            font-size: 22px !important;
+         }
+
+         /* Style for slider dots */
+         .main-slider .slick-dots {
+           bottom: 20px !important;
+           z-index: 9 !important;
+         }
+         
+         .main-slider .slick-dots li {
+           margin: 0 5px !important;
+         }
+         
+         .main-slider .slick-dots li button:before {
+           color: white !important;
+           opacity: 0.5 !important;
+           font-size: 12px !important;
+           width: 12px !important;
+           height: 12px !important;
+           line-height: 12px !important;
+           border-radius: 50% !important;
+           background: white !important;
+         }
+         
+         .main-slider .slick-dots li.slick-active button:before {
+           color: white !important;
+           opacity: 1 !important;
+           background: white !important;
          }
        `;
        document.head.appendChild(style);
