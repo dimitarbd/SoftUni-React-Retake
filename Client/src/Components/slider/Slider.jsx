@@ -160,10 +160,10 @@ return (
                 <div className="single-slide animation-style-01 bg-3">
                     <div className="slider-content">
                        <span>New thinking new possibilities</span>
-                       <h3>Interior &amp; Comfort</h3>
+                       <h3>Body &amp; Exterior</h3>
                        <h4>Starting at <span>$99.00</span></h4>
                        <div className="uren-btn-ps_left slide-btn">
-                          <Link className="uren-btn" to="/catalog" onClick={() => handleCategoryClick('Interior and Comfort')}>Read More</Link>
+                          <Link className="uren-btn" to="/catalog" onClick={() => handleCategoryClick('Body and Exterior')}>Read More</Link>
                        </div>
                     </div>
                 </div>
@@ -171,11 +171,11 @@ return (
                 {/* <!-- Begin Single Slide Area --> */}
                 <div className="single-slide animation-style-02 bg-4">
                     <div className="slider-content slider-content-2">
-                       <span className="primary-text_color">Car, Truck, CUV &amp; SUV Tires</span>
-                       <h3>Wheels &amp; Tires</h3>
+                       <span className="primary-text_color">Car, Truck, CUV &amp; SUV</span>
+                       <h3>Exhaust System</h3>
                        <h4>Sale up to 20% off</h4>
                        <div className="uren-btn-ps_left slide-btn">
-                         <Link className="uren-btn" to="/catalog" onClick={() => handleCategoryClick('Wheels and Tires')}>Read More</Link>
+                         <Link className="uren-btn" to="/catalog" onClick={() => handleCategoryClick('Exhaust System')}>Read More</Link>
                        </div>
                     </div>
                 </div>
@@ -185,14 +185,14 @@ return (
              <div className="row banner-wrap">
                 <div className="col-lg-12 col-md-6 mb-3">
                     <div className="slider-banner banner-item img-hover_effect" style={{ height: 'auto', marginTop: '0px' }}>
-                       <Link to="/catalog">
+                       <Link to="/catalog" onClick={() => handleCategoryClick('Wheels and Tires')}>
                           <img className="img-full" src="/images/banner/2-1.jpg" alt="Uren's Banner" style={{ width: '200%', height: '200%', objectFit: 'contain' }} />
                        </Link>
                     </div>
                 </div>
                 <div className="col-lg-12 col-md-6">
                     <div className="slider-banner-2 banner-item img-hover_effect" style={{ height: 'auto', marginTop: '10px' }}>
-                       <Link to="/catalog">
+                       <Link to="/catalog"onClick={() => handleCategoryClick('Interior and Comfort')}>
                           <img className="img-full" src="/images/banner/2-2.jpg" alt="Uren's Banner" style={{ width: '200%', height: '300%', objectFit: 'contain' }} />
                        </Link>
                     </div>

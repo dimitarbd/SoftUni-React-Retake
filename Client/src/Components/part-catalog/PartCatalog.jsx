@@ -136,7 +136,7 @@ export default function PartCatalog() {
                             <div className="shop-product-wrap grid gridview-3 img-hover-effect_area row">
                                 {paginatedParts.length > 0
                                     ? paginatedParts.map(part => <PartCatalogItem key={part._id} {...part} />)
-                                    : <p>No parts found in this category.</p>
+                                    : <h6>No parts found in this category.</h6>
                                 }
                             </div>
                             <div className="row">
@@ -144,7 +144,7 @@ export default function PartCatalog() {
                                     <div className="uren-paginatoin-area">
                                         <div className="row">
                                             <div className="col-lg-12">
-                                                <ul className="uren-pagination-box primary-color">
+                                                {paginatedParts.length > 0 && (<ul className="uren-pagination-box primary-color">
                                                     {renderPagination()}
                                                     {currentPage < totalPages && (
                                                         <li>
@@ -160,7 +160,7 @@ export default function PartCatalog() {
                                                             </Link>
                                                         </li>
                                                     )}
-                                                </ul>
+                                                </ul>)}
                                             </div>
                                         </div>
                                     </div>
