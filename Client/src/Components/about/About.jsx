@@ -1,6 +1,33 @@
 export default function About() {
     return (
         <>
+            <style>
+                {`
+                    .team-member-info {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        align-items: center;
+                        margin-bottom: 7px;
+                    }
+                    .team-member-info h3,
+                    .team-member-info p,
+                    .team-member-info a,
+                    .team-member-info span {
+                        margin: 0;
+                        padding: 0;
+                        text-align: center;
+                    }
+                    .team-content {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .uren-social_link {
+                        margin-top: 5px;
+                    }
+                `}
+            </style>
             {/* <!-- Begin Uren's Breadcrumb Area --> */}
             <div className="breadcrumb-area">
                 <div className="container">
@@ -21,7 +48,7 @@ export default function About() {
                         <div className="col-lg-6 col-md-5">
                             <div className="overview-img text-center img-hover_effect">
                                 <a href="#">
-                                    <img className="img-full" src="assets/images/about-us/1.jpg" alt="Uren's About Us Image" />
+                                    <img className="img-full" src="/images/about-us/1.jpg" alt="Uren's About Us Image" />
                                 </a>
                             </div>
                         </div>
@@ -112,13 +139,15 @@ export default function About() {
                             <div className="team-member">
                                 <div className="team-thumb img-hover_effect">
                                     <a href="#">
-                                        <img src="assets/images/about-us/team/1.jpg" alt="Our Team Member" />
+                                        <img src="/images/about-us/team/1.jpg" alt="Our Team Member" />
                                     </a>
                                 </div>
                                 <div className="team-content text-center">
-                                    <h3>Edwin Adams</h3>
-                                    <p>IT Expert</p>
-                                    <a href="#">info@example.com</a>
+                                    <div className="team-member-info">
+                                        <h3>Edwin Adams</h3>
+                                        <p>IT Expert</p>
+                                        <a href="#">info@example.com</a>
+                                    </div>
                                     <div className="uren-social_link">
                                         <ul>
                                             <li className="facebook">
@@ -156,13 +185,15 @@ export default function About() {
                             <div className="team-member">
                                 <div className="team-thumb img-hover_effect">
                                     <a href="#">
-                                        <img src="assets/images/about-us/team/2.jpg" alt="Our Team Member" />
+                                        <img src="/images/about-us/team/2.jpg" alt="Our Team Member" />
                                     </a>
                                 </div>
                                 <div className="team-content text-center">
-                                    <h3>Anny Adams</h3>
-                                    <p>Web Designer</p>
-                                    <a href="#">info@example.com</a>
+                                    <div className="team-member-info">
+                                        <h3>Anny Adams</h3>
+                                        <p>Web Designer</p>
+                                        <span>info@example.com</span>
+                                    </div>
                                     <div className="uren-social_link">
                                         <ul>
                                             <li className="facebook">
@@ -200,13 +231,15 @@ export default function About() {
                             <div className="team-member">
                                 <div className="team-thumb img-hover_effect">
                                     <a href="#">
-                                        <img src="assets/images/about-us/team/3.jpg" alt="Our Team Member" />
+                                        <img src="/images/about-us/team/3.jpg" alt="Our Team Member" />
                                     </a>
                                 </div>
                                 <div className="team-content text-center">
-                                    <h3>Edvin Adams</h3>
-                                    <p>Content Writer</p>
-                                    <a href="#" onClick={(e) => e.preventDefault()}>info@example.com</a>
+                                    <div className="team-member-info">
+                                        <h3>Edvin Adams</h3>
+                                        <p>Content Writer</p>
+                                        <a href="#" onClick={(e) => e.preventDefault()}>info@example.com</a>
+                                    </div>
                                     <div className="uren-social_link">
                                         <ul>
                                             <li className="facebook">
@@ -244,13 +277,15 @@ export default function About() {
                             <div className="team-member">
                                 <div className="team-thumb img-hover_effect">
                                     <a href="#">
-                                        <img src="assets/images/about-us/team/4.jpg" alt="Our Team Member" />
+                                        <img src="/images/about-us/team/4.jpg" alt="Our Team Member" />
                                     </a>
                                 </div>
                                 <div className="team-content text-center">
-                                    <h3>Eddy Adams</h3>
-                                    <p>Marketing officer</p>
-                                    <a href="#">info@example.com</a>
+                                    <div className="team-member-info">
+                                        <h3>Eddy Adams</h3>
+                                        <p>Marketing officer</p>
+                                        <a href="#">info@example.com</a>
+                                    </div>
                                     <div className="uren-social_link">
                                         <ul>
                                             <li className="facebook">

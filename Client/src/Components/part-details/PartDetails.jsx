@@ -101,6 +101,7 @@ export default function PartDetails() {
     }
 
     const isOwner = part._ownerId === userId;
+        
 
     return (
         <>
@@ -266,7 +267,7 @@ export default function PartDetails() {
                                                                                 {renderRating(comment.rating)}
                                                                             </ul>
                                                                             {/* Add Edit and Delete Buttons */}
-                                                                            {isAuthenticated && comment.author._id === userId && (
+                                                                            {isOwner && isAuthenticated && (
                                                                                 <div className="comment-actions d-flex">
                                                                                     <button
                                                                                         className="uren-btn uren-btn_sm uren-btn-bondi_blue"
