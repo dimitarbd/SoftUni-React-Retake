@@ -31,11 +31,11 @@ export default function Contact() {
                               claram anteposuerit litterarum formas human.</p>
                           <div className="single-contact-block">
                               <h4><i className="fa fa-fax"></i> Address</h4>
-                              <p>123 Main Street, Anytown, CA 12345 – USA</p>
+                              <p>69 Bulgaria Blvd., Sofia 1000, Bulgaria</p>
                           </div>
                           <div className="single-contact-block">
                               <h4><i className="fa fa-phone"></i> Phone</h4>
-                              <p>Mobile: (08) 123 456 789</p>
+                              <p>Mobile: (0359) 888 456 789</p>
                               <p>Hotline: 1009 678 456</p>
                           </div>
                           <div className="single-contact-block last-child">

@@ -229,7 +229,7 @@ return (
                     </div>
                 </div>
                 <div className="col-lg-12 col-md-6">
-                    <div className="slider-banner-2 banner-item img-hover_effect" style={{ height: 'auto', marginTop: '10px' }}>
+                    <div className="slider-banner-2 banner-item img-hover_effect" style={{ height: 'auto', marginTop: '-10px' }}>
                        <Link to="/catalog"onClick={() => handleCategoryClick('Interior and Comfort')}>
                           <img className="img-full" src="/images/banner/2-2.jpg" alt="Uren's Banner" style={{ width: '200%', height: '300%', objectFit: 'contain' }} />
                        </Link>

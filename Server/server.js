@@ -1430,7 +1430,20 @@
                 "imageUrl": "/images/product/large-size/7.jpg",
                 "rating": "3",
                 "description": "This turbo is being discontinued by VSRacing. Please check the Next Gen version which is a newer design of this turbo VSR Billet 7875 Gen1 T4 Turbo. Most popular unit for sub 800 hp Setups;Compresor: 78mm 11 Blade Billet Compressor Wheel extended tip for high flow Turbine: GT42 75mm/82 Exducer/Inducer Downpipe: 3″; Compressor Outlet 2.5″ Turbine Housing : .96ar T4 open",
-                "_id": "b75625e4-2a79-4c2b-a2f1-f2c5d9229473"
+                "_id": "b75625e4-2a79-4c2b-a2f1-f2c5d9229473",
+            },
+            "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+                "title": "20' XO Caracas- Matte Black",
+                "category": "Wheels and Tires",
+                "brand": "XO",
+                "price": "599",
+                "year": "2021",
+                "quantity": "4",
+                "imageUrl": "/images/product/large-size/9.jpg",
+                "rating": "5",
+                "description": "The XO brand of wheels is all about silky smooth composition, and the Caracas is no slacker. XO’s dazzling design philosophy is easily visible in this double 5 spoke design, featuring a set of graceful spokes which meet in a pleasant concave center. In the interests of high quality, these rims are rotary forged at high pressures for fortitude and low weight to provide increased performance and longevity. The time-tested rotary forged process creates an extremely light wheel, which outperforms cast wheels in every way. Naturally, the XO Caracas are JWL and VIA certified, so you’re sure to be safe on the road. XO wheels have made a name for themselves by offering innovative, modern custom finishes with a wide range of options available. They’re also offered in a variety of sizes and widths to facilitate staggered fitments. Thanks to their unique appearance, the XO Caracas will definitely be the most striking accessory you purchase for your vehicle.",
+                "_createdOn": 1744142583084,
+                "_id": "8012c84a-c837-4c7a-a572-d9e3fe59ce4a"
             }
         },
         recipes: {
