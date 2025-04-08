@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function About() {
     return (
         <>
@@ -61,7 +63,7 @@ export default function About() {
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, nulla veniam? Magni aliquid
                                     asperiores magnam. Veniam ex tenetur.</p>
                                 <div className="uren-about-us_btn-area">
-                                    <a className="about-us_btn" href="shop-left-sidebar.html">Shop Now</a>
+                                    <Link className="about-us_btn" to="/catalog">Shop Now</Link>
                                 </div>
                             </div>
                         </div>

@@ -158,6 +158,7 @@ export default function Header() {
                                         {!isAuthenticated && <li><Link to="/login" >Login</Link></li>}
                                         {!isAuthenticated && <li><Link to="/register" >Register</Link></li>}
                                         <li className=""><Link to="/about">About Us</Link></li>
+                                        <li className=""><Link to="/contact">Contact</Link></li>
                                     </ul>
                                 </nav>
                             </div>

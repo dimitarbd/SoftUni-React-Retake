@@ -18,6 +18,7 @@ import PartImport from './Components/part-import/PartImport';
 import PartEdit from './Components/part-edit/PartEdit';
 import Logout from './Components/logout/Logout';
 import MyAccount from './Components/my-account/My-Account';
+import Contact from './Components/contact/Contact';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
                             <Route path="/catalog/import" element={<PartImport />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/my-account" element={<MyAccount />} />
+                            <Route path="/contact" element={<Contact />} />
                         </Routes>
 
                         <Footer />
