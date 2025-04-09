@@ -49,6 +49,12 @@ export default function Header() {
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
         navigate('/catalog');
+        
+        // Hide the categories-toggle element
+        const categoryMenuList = document.getElementById('cate-toggle');
+        if (categoryMenuList) {
+            categoryMenuList.style.display = 'none';
+        }
     };
 
     const handleSearch = (e) => {
@@ -89,7 +95,7 @@ export default function Header() {
                                             <i className="ion-navicon"></i>
                                         </Link>
                                     </li>                                    
-                                    <li className="contact-us_wrap">
+                                    <li className="contact-us_wrap" style={{ marginLeft: 'auto' }}>
                                         <span style={{ color: 'white', fontSize: '1.5em' }}><i className="ion-android-call"></i>+123 321 345</span>
                                     </li>
                                 </ul>
@@ -211,7 +217,7 @@ export default function Header() {
                                             <i className="ion-navicon"></i>
                                         </Link>
                                     </li>                                    
-                                    <li className="contact-us_wrap">
+                                    <li className="contact-us_wrap" style={{ marginLeft: 'auto' }}>
                                         <span style={{ color: 'white', fontSize: '1.5em' }}><i className="ion-android-call"></i>+123 321 345</span>
                                     </li>
                                 </ul>

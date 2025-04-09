@@ -157,25 +157,16 @@ export default function PartDetails() {
                                             <li>Price: <button className="btn-link">${Number(part.price).toFixed(2)}</button></li>
                                             <li>Year: <button className="btn-link">{part.year}</button></li>
                                         </ul>
-                                    </div>
-                                    <div className="quantity">
-                                        <label>Quantity</label>
-                                        <div className="cart-plus-minus">
-                                            <input className="cart-plus-minus-box" defaultValue="1" type="text" />
-                                            <div className="dec qtybutton"><i className="fa fa-angle-down"></i></div>
-                                            <div className="inc qtybutton"><i className="fa fa-angle-up"></i></div>
-                                        </div>
-                                    </div>
+                                    </div>                                   
                                     <div className="qty-btn_area">
                                         <ul>
-                                            <li><a className="qty-cart_btn" href="cart.html">Add To Cart</a></li>
-                                            {isOwner &&
+                                            {isOwner && isAuthenticated &&
                                                 <li><Link className="qty-edit_btn uren-btn_dark d-flex align-items-center" to={`/catalog/${partId}/edit`}>
                                                     <i className="fa fa-edit" style={{ marginRight: '5px' }}></i> <span>Edit Part</span>
                                                 </Link></li>
 
                                             }
-                                            {isOwner &&
+                                            {isOwner && isAuthenticated &&
                                                 <li><a href="#" className="qty-edit_btn uren-btn_dark d-flex align-items-center"
                                                     onClick={(e) => {
                                                         e.preventDefault(); // Prevent default anchor behavior
