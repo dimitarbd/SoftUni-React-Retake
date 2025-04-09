@@ -7,21 +7,9 @@ export default function PartEdit() {
     const { partId } = useParams();
     const navigate = useNavigate();
     const [error, setError] = useState('');
-
     const { isAuthenticated } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
-    const [formData, setFormData] = useState({
-        title: '',
-        price: '',
-        description: '',
-        imageUrl: '',
-        category: '',
-        quantity: '',
-        brand: '',
-        model: '',
-        year: '',
-        rating: '',
-    });
+    const [formData, setFormData] = useState(null);
 
     useEffect(() => {
         if (!isAuthenticated) {
@@ -95,7 +83,7 @@ export default function PartEdit() {
         return null;
     }
 
-    if (isLoading) {
+    if (isLoading || !formData) {
         return (
             <div className="container text-center mt-5">
                 <div className="spinner-border text-primary" role="status">
@@ -139,7 +127,7 @@ export default function PartEdit() {
                                                 type="text"
                                                 id="title"
                                                 name="title"
-                                                value={formData.title}
+                                                value={formData.title || ''}
                                                 onChange={handleChange}
                                                 required
                                                 placeholder="Enter part name"
@@ -153,7 +141,7 @@ export default function PartEdit() {
                                                 type="number"
                                                 id="price"
                                                 name="price"
-                                                value={formData.price}
+                                                value={formData.price || ''}
                                                 onChange={handleChange}
                                                 required
                                                 placeholder="Enter price"
@@ -168,7 +156,7 @@ export default function PartEdit() {
                                             <textarea
                                                 id="description"
                                                 name="description"
-                                                value={formData.description}
+                                                value={formData.description || ''}
                                                 onChange={handleChange}
                                                 rows="4"
                                                 required
@@ -186,7 +174,7 @@ export default function PartEdit() {
                                                 type="url"
                                                 id="imageUrl"
                                                 name="imageUrl"
-                                                value={formData.imageUrl}
+                                                value={formData.imageUrl || ''}
                                                 onChange={handleChange}
                                                 required
                                                 placeholder="http://example.com/image.jpg"
@@ -200,7 +188,7 @@ export default function PartEdit() {
                                                 type="number"
                                                 id="quantity"
                                                 name="quantity"
-                                                value={formData.quantity}
+                                                value={formData.quantity || ''}
                                                 onChange={handleChange}
                                                 required
                                                 placeholder="Enter quantity in stock"
@@ -216,7 +204,7 @@ export default function PartEdit() {
                                                 className="nice-select w-100"
                                                 id="category"
                                                 name="category"
-                                                value={formData.category}
+                                                value={formData.category || ''}
                                                 onChange={handleChange}
                                                 required
                                             >
@@ -247,7 +235,7 @@ export default function PartEdit() {
                                                 type="text"
                                                 id="brand"
                                                 name="brand"
-                                                value={formData.brand}
+                                                value={formData.brand || ''}
                                                 onChange={handleChange}
                                                 required
                                                 placeholder="Enter brand"

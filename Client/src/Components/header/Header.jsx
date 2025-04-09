@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuthcontext } from '../../contexts/AuthContext';
@@ -23,6 +23,8 @@ export default function Header() {
     const { setSelectedCategory } = useCategory();
     const { setSearchQuery } = useSearch();
     const navigate = useNavigate();
+    const [searchValue, setSearchValue] = useState('');
+    const [mobileSearchValue, setMobileSearchValue] = useState('');
 
     useEffect(() => {
         const categoryHeading = document.querySelector('.category-heading');
@@ -59,9 +61,13 @@ export default function Header() {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const searchInput = e.target.querySelector('input[type="text"]');
-        const searchValue = searchInput.value.trim();
         setSearchQuery(searchValue);
+        navigate('/catalog');
+    };
+
+    const handleMobileSearch = (e) => {
+        e.preventDefault();
+        setSearchQuery(mobileSearchValue);
         navigate('/catalog');
     };
 
@@ -80,7 +86,12 @@ export default function Header() {
                         <div className="col-xl-5 col-lg-6 d-none d-lg-block">
                             <div className="hm-form_area">
                                 <form onSubmit={handleSearch} className="hm-searchbox">
-                                    <input type="text" placeholder="Enter your search key ..." />
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your search key ..." 
+                                        value={searchValue}
+                                        onChange={(e) => setSearchValue(e.target.value)}
+                                    />
                                     <button className="header-search_btn" type="submit">
                                         <i className="ion-ios-search-strong"><span>Search</span></i>
                                     </button>
@@ -169,8 +180,13 @@ export default function Header() {
                         </div>)}
                         <div className="custom-search_col d-none d-md-block d-lg-none">
                             <div className="hm-form_area">
-                                <form onSubmit={handleSearch} className="hm-searchbox">
-                                    <input type="text" placeholder="Enter your search key ..." />
+                                <form onSubmit={handleMobileSearch} className="hm-searchbox">
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your search key ..." 
+                                        value={mobileSearchValue}
+                                        onChange={(e) => setMobileSearchValue(e.target.value)}
+                                    />
                                     <button className="header-search_btn" type="submit">
                                         <i className="ion-ios-search-strong"><span>Search</span></i>
                                     </button>
@@ -231,9 +247,14 @@ export default function Header() {
                     <div className="container">
                         <Link to="#" className="btn-close" onClick={(e) => e.preventDefault()}><i className="ion-android-close"></i></Link>
                         <div className="offcanvas-inner_search">
-                            <form onSubmit={handleSearch} className="inner-searchbox">
-                                <input type="text" placeholder="Search for item..." />
-                                <button className="search_btn" type="submit" onClick={(e) => e.preventDefault()}><i className="ion-ios-search-strong"></i></button>
+                            <form onSubmit={handleMobileSearch} className="inner-searchbox">
+                                <input 
+                                    type="text" 
+                                    placeholder="Search for item..." 
+                                    value={mobileSearchValue}
+                                    onChange={(e) => setMobileSearchValue(e.target.value)}
+                                />
+                                <button className="search_btn" type="submit"><i className="ion-ios-search-strong"></i></button>
                             </form>
                         </div>
                         <nav className="offcanvas-navigation">

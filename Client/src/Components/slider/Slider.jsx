@@ -168,16 +168,14 @@ export default function Slider() {
        `;
        document.head.appendChild(style);
        
-     }, 100); // Small delay to ensure the slider is fully initialized
+     }, 100); 
 
      return () => {
-       // Clean up the style element
        const customStyle = document.querySelector('style[data-slick-custom]');
        if (customStyle) {
          customStyle.parentNode.removeChild(customStyle);
        }
        
-       // Unslick on unmount to prevent memory leaks
        if ($('.main-slider').hasClass('slick-initialized')) {
          $('.main-slider').slick('unslick');
        }
