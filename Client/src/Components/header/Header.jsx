@@ -88,19 +88,7 @@ export default function Header() {
                                         <Link to="#mobileMenu" className="mobile-menu_btn toolbar-btn color--white">
                                             <i className="ion-navicon"></i>
                                         </Link>
-                                    </li>
-                                    <li className="minicart-wrap">
-                                        <Link to="#miniCart" className="minicart-btn toolbar-btn">
-                                            <div className="minicart-count_area">
-                                                <span className="item-count">3</span>
-                                                <i className="ion-bag"></i>
-                                            </div>
-                                            <div className="minicart-front_text">
-                                                <span>Cart:</span>
-                                                <span className="total-price">462.4</span>
-                                            </div>
-                                        </Link>
-                                    </li>
+                                    </li>                                    
                                     <li className="contact-us_wrap">
                                         <span style={{ color: 'white', fontSize: '1.5em' }}><i className="ion-android-call"></i>+123 321 345</span>
                                     </li>
@@ -202,8 +190,8 @@ export default function Header() {
                                         {isAuthenticated && <li><Link to="/logout" >Logout</Link></li>}
                                         {!isAuthenticated && <li><Link to="/login" >Login</Link></li>}
                                         {!isAuthenticated && <li><Link to="/register" >Register</Link></li>}
-
                                         <li className=""><Link to="/about">About Us</Link></li>
+                                        <li className=""><Link to="/contact">Contact</Link></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -222,19 +210,7 @@ export default function Header() {
                                         <Link to="#mobileMenu" className="mobile-menu_btn toolbar-btn color--white">
                                             <i className="ion-navicon"></i>
                                         </Link>
-                                    </li>
-                                    <li className="minicart-wrap">
-                                        <Link to="#miniCart" className="minicart-btn toolbar-btn">
-                                            <div className="minicart-count_area">
-                                                <span className="item-count">3</span>
-                                                <i className="ion-bag"></i>
-                                            </div>
-                                            <div className="minicart-front_text">
-                                                <span>Cart:</span>
-                                                <span className="total-price">462.4</span>
-                                            </div>
-                                        </Link>
-                                    </li>
+                                    </li>                                    
                                     <li className="contact-us_wrap">
                                         <span style={{ color: 'white', fontSize: '1.5em' }}><i className="ion-android-call"></i>+123 321 345</span>
                                     </li>
@@ -243,27 +219,7 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="offcanvas-minicart_wrapper" id="miniCart">
-                <div className="offcanvas-menu-inner">
-                    <Link to="#" className="btn-close"><i className="ion-android-close"></i></Link>
-                    <div className="minicart-content">
-                        <div className="minicart-heading">
-                            <h4>Shopping Cart</h4>
-                        </div>                       
-                    </div>
-                    <div className="minicart-item_total">
-                        <span>Subtotal</span>
-                        <span className="ammount">$462.40</span>
-                    </div>
-                    <div className="minicart-btn_area">
-                        <Link to="cart.html" className="uren-btn uren-btn_dark uren-btn_fullwidth">Minicart</Link>
-                    </div>
-                    <div className="minicart-btn_area">
-                        <Link to="checkout.html" className="uren-btn uren-btn_dark uren-btn_fullwidth">Checkout</Link>
-                    </div>
-                </div>
-            </div>
+            </div>            
             <div className="mobile-menu_wrapper" id="mobileMenu">
                 <div className="offcanvas-menu-inner">
                     <div className="container">
