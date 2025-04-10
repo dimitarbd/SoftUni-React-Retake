@@ -19,6 +19,7 @@ import PartEdit from './Components/part-edit/PartEdit';
 import Logout from './Components/logout/Logout';
 import MyAccount from './Components/my-account/My-Account';
 import Contact from './Components/contact/Contact';
+import AuthGuard from './Components/components/AuthGuard';
 
 
 function App() {
@@ -35,14 +36,17 @@ function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/register" element={<Register />} />
                             <Route path="/login" element={<Login />} />
-                            <Route path="/logout" element={<Logout />} />
                             <Route path="/catalog" element={<PartCatalog />} />
                             <Route path="/catalog/:partId/details" element={<PartDetails />} />
-                            <Route path="/catalog/:partId/edit" element={<PartEdit />} />
-                            <Route path="/catalog/import" element={<PartImport />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/my-account" element={<MyAccount />} />
                             <Route path="/contact" element={<Contact />} />
+                            <Route element={<AuthGuard />}>
+                                <Route path="/catalog/import" element={<PartImport />} />
+                                <Route path="/catalog/:partId/edit" element={<PartEdit />} />
+                                <Route path="/logout" element={<Logout />} />
+                            </Route>
+
                         </Routes>
 
                         <Footer />

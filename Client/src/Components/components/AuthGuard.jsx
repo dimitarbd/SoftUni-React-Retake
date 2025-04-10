@@ -1,5 +1,10 @@
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuthcontext } from "../../contexts/AuthContext";
+
 export default function AuthGuard() {
-   return (
-       
-   );
+    const { isAuthenticated} = useAuthcontext();
+
+   return isAuthenticated
+     ? <Outlet />
+     : <Navigate to="/login" />;
 }
