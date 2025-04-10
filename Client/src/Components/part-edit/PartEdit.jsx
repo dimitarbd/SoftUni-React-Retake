@@ -17,11 +17,9 @@ export default function PartEdit() {
             return;
         }
 
-        // Fetch existing part data
         const fetchPart = async () => {
             try {
                 const partData = await partsAPI.getOne(partId);
-                // Make sure specifications object exists
                 if (!partData.specifications) {
                     partData.specifications = {
                         title: '',

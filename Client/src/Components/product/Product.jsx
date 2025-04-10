@@ -13,30 +13,28 @@ export default function Product() {
     useEffect(() => {
         (async () => {
             try {
-                const result = await partsAPI.getAll();
+                const result = await partsAPI.getLatest();
                 if (!Array.isArray(result) || result.length === 0) {
                     console.warn("No parts available");
-                    setLatestParts([]); // Set an empty array if no data
+                    setLatestParts([]); 
                     return;
                 }
 
-                const latest = result.slice().reverse().slice(0, 10); // Avoid mutating the original array
-                setLatestParts(latest);
+                setLatestParts(result);
             } catch (error) {
                 console.error("Error fetching parts:", error);
-                setLatestParts([]); // Handle errors gracefully
+                setLatestParts([]); 
             }
         })();
     }, []);
 
     useEffect(() => {
         if (latestParts.length > 0) {
-            // First unslick any existing slider to prevent duplicates
             if ($('.uren-slick-slider').hasClass('slick-initialized')) {
                 $('.uren-slick-slider').slick('unslick');
             }
             
-            // Initialize slick slider only when latestParts is updated
+            
             $('.uren-slick-slider').not('.slick-initialized').slick({
                 slidesToShow: 6,
                 arrows: true,
@@ -51,12 +49,10 @@ export default function Product() {
                 ]
             });
             
-            // Clean up arrow duplicates
+           
             setTimeout(() => {
-                // Handle next arrows - keep only the first one
                 const productNextArrows = document.querySelectorAll('.product-slider .slick-next');
                 if (productNextArrows.length > 1) {
-                    // Keep the first one, remove the rest
                     for (let i = 1; i < productNextArrows.length; i++) {
                         if (productNextArrows[i] && productNextArrows[i].parentNode) {
                             productNextArrows[i].parentNode.removeChild(productNextArrows[i]);
@@ -64,10 +60,8 @@ export default function Product() {
                     }
                 }
                 
-                // Handle prev arrows - keep only the first one
                 const productPrevArrows = document.querySelectorAll('.product-slider .slick-prev');
                 if (productPrevArrows.length > 1) {
-                    // Keep the first one, remove the rest
                     for (let i = 1; i < productPrevArrows.length; i++) {
                         if (productPrevArrows[i] && productPrevArrows[i].parentNode) {
                             productPrevArrows[i].parentNode.removeChild(productPrevArrows[i]);
@@ -75,37 +69,30 @@ export default function Product() {
                     }
                 }
 
-                // Fix carousel items to have same height
                 equalizeItemHeights();
             }, 100);
         }
         
-        // Function to equalize heights of carousel items
         const equalizeItemHeights = () => {
-            // First get all slide items
             const slideItems = document.querySelectorAll('.product-slider .slick-slide:not(.slick-cloned) .single-product');
             
             if (slideItems.length === 0) return;
             
-            // Reset heights first to get natural height
             slideItems.forEach(item => {
                 item.style.height = 'auto';
             });
             
-            // Find tallest item
             let maxHeight = 0;
             slideItems.forEach(item => {
                 const height = item.offsetHeight;
                 maxHeight = Math.max(maxHeight, height);
             });
             
-            // Apply max height to all items
             if (maxHeight > 0) {
                 slideItems.forEach(item => {
                     item.style.height = `${maxHeight}px`;
                 });
                 
-                // Also apply to cloned items for infinite loop
                 const clonedItems = document.querySelectorAll('.product-slider .slick-slide.slick-cloned .single-product');
                 clonedItems.forEach(item => {
                     item.style.height = `${maxHeight}px`;
@@ -113,7 +100,6 @@ export default function Product() {
             }
         };
         
-        // Handle resize events to adjust heights
         const handleResize = () => {
             if ($('.uren-slick-slider').hasClass('slick-initialized')) {
                 equalizeItemHeights();
@@ -122,14 +108,13 @@ export default function Product() {
         
         window.addEventListener('resize', handleResize);
         
-        // Clean up function to unslick on unmount
         return () => {
             window.removeEventListener('resize', handleResize);
             if ($('.uren-slick-slider').hasClass('slick-initialized')) {
                 $('.uren-slick-slider').slick('unslick');
             }
         };
-    }, [latestParts]); // Re-run this effect only when latestParts changes
+    }, [latestParts]); 
 
     return (
         <div className="uren-product_area">

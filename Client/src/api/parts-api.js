@@ -22,6 +22,19 @@ export const getAll = async () => {
     return parts;
 };
 
+export const getLatest = async () => {
+    const urlSearchParams = new URLSearchParams({
+        sortBy: `_createdOn desc`,
+        pageSize: 10,
+    })
+
+    const result = await requester.get(`${BASE_URL}?${urlSearchParams.toString()}`);
+
+    const latestParts = Object.values(result)
+
+    return latestParts;
+}
+
 export const getOne = (partId) => requester.get(`${BASE_URL}/${partId}`);
 
 export const create = (partData) => requester.post(BASE_URL, partData);
@@ -35,7 +48,8 @@ const partsAPI = {
     getOne,
     create,
     update,
-    del
+    del,
+    getLatest
 };
 
 export default partsAPI;
