@@ -1348,7 +1348,7 @@
     };
     var seedData = {
         parts: {
-            "dded749d-5a91-4c10-8211-a3af649c43c0": {
+        "dded749d-5a91-4c10-8211-a3af649c43c0": {
             "title": "S837 Haze Wheels",
             "category": "Wheels and Tires",
             "brand": "Buxton",
@@ -1439,7 +1439,7 @@
             "_id": "b75625e4-2a79-4c2b-a2f1-f2c5d9229473",
             "_createdOn": 1744224648452
         },
-        "a1b2c3d4-e5f6-4a5b-8c7d-9e0f1a2b3c4d": {
+        "1a2b3c4d-e5f6-4a7b-8c9d-0e1f2a3b4c5d": {
             "title": "Performance Clutch Kit",
             "category": "Engine and Drivetrain",
             "brand": "Exedy",
@@ -1449,75 +1449,75 @@
             "imageUrl": "https://www.compbrake.com/wp-content/uploads/2023/05/CMB-RTSPC-0815CSC-COMPBRAKE-Performance-Clutch-%E2%80%93-Ford-Fiesta-MK8-ST200-1.5L-%E2%80%93-PADDLE-CLUTCH.jpg",
             "rating": "4",
             "description": "High-performance clutch kit designed for sports cars and high-performance vehicles. Features a heavy-duty pressure plate, organic clutch disc, and release bearing. Provides improved engagement and durability for demanding driving conditions.",
-            "_id": "a1b2c3d4-e5f6-4a5b-8c7d-9e0f1a2b3c4d",
+            "_id": "1a2b3c4d-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
             "_createdOn": 1744224648453
         },
-        "f1e2d3c4-b5a6-4c5d-8e7f-9a0b1c2d3e4f": {
+        "7d8e9f0a-b1c2-4d3e-4f5a-6b7c8d9e0f1a": {
+            "title": "Electric Water Pump",
+            "category": "Cooling System",
+            "brand": "Davies Craig",
+            "price": "280",
+            "year": "2023",
+            "quantity": "12",
+            "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoXuIjaLSFMGR7eWS-n4cky5PPvdgSnK0OHVF6k2MvPwRzP7d4W6x-GAqtBkg2ICsykKg&usqp=CAU",
+            "rating": "4",
+            "description": "High-performance electric water pump with variable speed control. Features improved flow rate and reliability. Includes controller and mounting hardware.",
+            "_id": "7d8e9f0a-b1c2-4d3e-4f5a-6b7c8d9e0f1a",
+            "_createdOn": 1744224648461
+        },
+        "8e9f0a1b-c2d3-4e4f-5a6b-7c8d9e0f1a2b": {
             "title": "Coilover Suspension Kit",
             "category": "Suspension and Steering",
             "brand": "KW",
             "price": "1200",
             "year": "2023",
             "quantity": "8",
-            "imageUrl": "https://www.kwsuspension.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/v/3/v3_coilover_kit.jpg",
+            "imageUrl": "https://m.media-amazon.com/images/I/61jvguz8kQL._AC_UF1000,1000_QL80_.jpg",
             "rating": "5",
             "description": "Adjustable coilover suspension kit with height and damping adjustment. Includes front and rear shocks, springs, and all necessary mounting hardware. Perfect for track days and spirited driving while maintaining daily drivability.",
-            "_id": "f1e2d3c4-b5a6-4c5d-8e7f-9a0b1c2d3e4f",
+            "_id": "8e9f0a1b-c2d3-4e4f-5a6b-7c8d9e0f1a2b",
             "_createdOn": 1744224648454
         },
-        "c1d2e3f4-a5b6-4d5e-8f7a-9b0c1d2e3f4a": {
+        "5a6b7c8d-e9f0-4e1f-2a3b-4c5d6e7f8a9b": {
             "title": "Power Steering Pump",
             "category": "Suspension and Steering",
             "brand": "TRW",
             "price": "180",
             "year": "2023",
             "quantity": "12",
-            "imageUrl": "https://www.trwaftermarket.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/s/ps_pump_main.jpg",
+            "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZKpo5Krw5Nv0RiE7xdAXAdQlhfJVntp7QDjPxo2UtisSsCOlEnIYss-1z3YXw_cZkCZw&usqp=CAU",
             "rating": "4",
             "description": "OEM-quality power steering pump with improved efficiency and durability. Compatible with most modern vehicles and includes mounting bracket and pulley. Designed for smooth operation and long service life.",
-            "_id": "c1d2e3f4-a5b6-4d5e-8f7a-9b0c1d2e3f4a",
+            "_id": "5a6b7c8d-e9f0-4e1f-2a3b-4c5d6e7f8a9b",
             "_createdOn": 1744224648455
-        },
-        "d1e2f3a4-b5c6-4e5f-8a7b-9c0d1e2f3a4b": {
-            "title": "High-Performance Alternator",
-            "category": "Electrical System",
-            "brand": "Bosch",
-            "price": "250",
-            "year": "2023",
-            "quantity": "10",
-            "imageUrl": "https://static.summitracing.com/global/images/prod/large/bos-0120-150-1.jpg",
-            "rating": "5",
-            "description": "High-output alternator designed for vehicles with additional electrical accessories. Features improved cooling and higher amperage output. Includes voltage regulator and mounting hardware.",
-            "_id": "d1e2f3a4-b5c6-4e5f-8a7b-9c0d1e2f3a4b",
-            "_createdOn": 1744224648456
-        },
-        "e1f2a3b4-c5d6-4f5a-8b7c-9d0e1f2a3b4c": {
+        },        
+        "8a9b0c1d-e2f3-4b4c-5d6e-7f8a9b0c1d2e": {
             "title": "Performance Starter Motor",
             "category": "Electrical System",
             "brand": "Denso",
             "price": "150",
             "year": "2023",
             "quantity": "15",
-            "imageUrl": "https://static.summitracing.com/global/images/prod/large/den-228000-1680.jpg",
+            "imageUrl": "https://www.minispares.com/media/catalog/product/cache/7bfb6bc9cef7d249596faba93ce80729/g/x/gxe1005.jpg",
             "rating": "4",
             "description": "High-torque starter motor with improved cold-start performance. Features heavy-duty construction and enhanced durability. Compatible with most modern vehicles.",
-            "_id": "e1f2a3b4-c5d6-4f5a-8b7c-9d0e1f2a3b4c",
+            "_id": "8a9b0c1d-e2f3-4b4c-5d6e-7f8a9b0c1d2e",
             "_createdOn": 1744224648457
         },
-        "f1a2b3c4-d5e6-4a5b-8c7d-9e0f1a2b3c4d": {
+        "9a0b1c2d-e3f4-4c5d-6e7f-8a9b0c1d2e3f": {
             "title": "Performance Exhaust System",
             "category": "Exhaust System",
             "brand": "Akrapovic",
             "price": "1200",
             "year": "2023",
             "quantity": "6",
-            "imageUrl": "https://static.summitracing.com/global/images/prod/large/akr-akr-0001.jpg",
+            "imageUrl": "https://flat6motorsports.com/cdn/shop/products/Soul-Performance-Products-Porsche-718-GT4-Valved-Exhaust-Product-Combined-510x340.jpg?v=1605110002",
             "rating": "5",
             "description": "Full stainless steel exhaust system with improved flow and sound. Includes headers, catalytic converters, and mufflers. Designed for maximum performance while maintaining emissions compliance.",
-            "_id": "f1a2b3c4-d5e6-4a5b-8c7d-9e0f1a2b3c4d",
+            "_id": "9a0b1c2d-e3f4-4c5d-6e7f-8a9b0c1d2e3f",
             "_createdOn": 1744224648458
         },
-        "a1b2c3d4-e5f6-4b5c-8d7e-9f0a1b2c3d4e": {
+        "0a1b2c3d-e4f5-4d6e-7f8a-9b0c1d2e3f4a": {
             "title": "High-Flow Catalytic Converter",
             "category": "Exhaust System",
             "brand": "Magnaflow",
@@ -1527,33 +1527,33 @@
             "imageUrl": "https://static.summitracing.com/global/images/prod/large/mpe-99005hm.jpg",
             "rating": "4",
             "description": "Performance catalytic converter with improved flow characteristics. Maintains emissions compliance while reducing exhaust backpressure. Includes mounting hardware and gaskets.",
-            "_id": "a1b2c3d4-e5f6-4b5c-8d7e-9f0a1b2c3d4e",
+            "_id": "0a1b2c3d-e4f5-4d6e-7f8a-9b0c1d2e3f4a",
             "_createdOn": 1744224648459
         },
-        "b1c2d3e4-f5a6-4c5d-8e7f-9a0b1c2d3e4f": {
+        "2a3b4c5d-e6f7-4f8a-9b0c-1d2e3f4a5b6c": {
             "title": "Performance Radiator",
             "category": "Cooling System",
             "brand": "Koyo",
             "price": "400",
             "year": "2023",
             "quantity": "8",
-            "imageUrl": "https://www.koyorad.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/r/a/radiator_aluminum_performance.jpg",
+            "imageUrl": "https://cdn11.bigcommerce.com/s-9x01qfh1f5/images/stencil/1580x1580/products/4620/6560/1445883389-csf-radiator__47870.1532358823.jpg?c=2",
             "rating": "5",
             "description": "High-capacity aluminum radiator with improved cooling efficiency. Features dual-core design and larger surface area. Includes mounting brackets and hoses.",
-            "_id": "b1c2d3e4-f5a6-4c5d-8e7f-9a0b1c2d3e4f",
+            "_id": "2a3b4c5d-e6f7-4f8a-9b0c-1d2e3f4a5b6c",
             "_createdOn": 1744224648460
         },
-        "c1d2e3f4-a5b6-4d5e-8f7a-9b0c1d2e3f4a": {
+        "9f0a1b2c-d3e4-4f5a-6b7c-8d9e0f1a2b3c": {
             "title": "Electric Water Pump",
             "category": "Cooling System",
             "brand": "Davies Craig",
             "price": "280",
             "year": "2023",
             "quantity": "12",
-            "imageUrl": "https://www.daviescraig.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/e/w/ewp_controller_kit.jpg",
+            "imageUrl": "https://www.vocaracing.com/wp-content/uploads/2018/07/VCR-RD09.PUMP01.jpg",
             "rating": "4",
             "description": "High-performance electric water pump with variable speed control. Features improved flow rate and reliability. Includes controller and mounting hardware.",
-            "_id": "c1d2e3f4-a5b6-4d5e-8f7a-9b0c1d2e3f4a",
+            "_id": "9f0a1b2c-d3e4-4f5a-6b7c-8d9e0f1a2b3c",
             "_createdOn": 1744224648461
         },
         "d1e2f3a4-b5c6-4e5f-8a7b-9c0d1e2f3a4b": {
@@ -1602,7 +1602,7 @@
             "price": "200",
             "year": "2023",
             "quantity": "15",
-            "imageUrl": "https://www.walbro.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/u/fuel_pump_high_performance.jpg",
+            "imageUrl": "https://trackformula.co.uk/wp-content/uploads/2017/06/RL265E-PErformance-Fuel-Pump-Side-Shot.jpg",
             "rating": "4",
             "description": "High-flow fuel pump with improved pressure and volume. Features improved reliability and durability. Includes mounting hardware and wiring harness.",
             "_id": "a1b2c3d4-e5f6-4b5c-8d7e-9f0a1b2c3d4e",
@@ -1615,7 +1615,7 @@
             "price": "450",
             "year": "2023",
             "quantity": "20",
-            "imageUrl": "https://www.bosch-automotive-catalog.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/u/fuel_injectors_high_performance.jpg",
+            "imageUrl": "https://fullthrottlespeed.com/cdn/shop/files/240injector_4_1024x1024_49c269f2-63cc-48c7-b03c-d35cb27ee2aa.jpg?v=1698253093",
             "rating": "5",
             "description": "High-flow fuel injectors with improved spray pattern and flow rate. Features improved atomization and reliability. Includes O-rings and mounting hardware.",
             "_id": "b1c2d3e4-f5a6-4c5d-8e7f-9a0b1c2d3e4f",
@@ -1632,8 +1632,7 @@
             "rating": "5",
             "description": "The XO brand of wheels is all about silky smooth composition, and the Caracas is no slacker. XO's dazzling design philosophy is easily visible in this double 5 spoke design, featuring a set of graceful spokes which meet in a pleasant concave center. In the interests of high quality, these rims are rotary forged at high pressures for fortitude and low weight to provide increased performance and longevity. The time-tested rotary forged process creates an extremely light wheel, which outperforms cast wheels in every way. Naturally, the XO Caracas are JWL and VIA certified, so you're sure to be safe on the road. XO wheels have made a name for themselves by offering innovative, modern custom finishes with a wide range of options available. They're also offered in a variety of sizes and widths to facilitate staggered fitments. Thanks to their unique appearance, the XO Caracas will definitely be the most striking accessory you purchase for your vehicle.",
             "_createdOn": 1744142583084,
-            "_id": "8012c84a-c837-4c7a-a572-d9e3fe59ce4a",
-            "_createdOn": 1744224648467
+            "_id": "60f0cf0b-34b0-4abd-9769-8c42f830dffc"
         },
         "18b06d4a-a516-4400-b9b4-fd43fbfce5a2": {
             "title": "TAROX Sport Japan – Front Brake Disc – 354.5 mm",
@@ -1646,10 +1645,9 @@
             "rating": "4",
             "description": "As the name implies Sport Japan discs were originally designed for the Japanese market where tough looks and high performance are important factors. Sport Japan discs are now one of the only aftermarket performance discs to still feature fully drilled countersunk holes which are much more affective at venting gasses which cause brake fade than the more common dimples. 6 grooves on the braking surface keep pads from glazing. All Sport Japan discs are based on original equipment specification, TÜV approved castings, heat treated for strength and hand finished to ensure the smoothest possible braking surface. Sport Japan Discs are TÜV approved for most applications.",
             "_createdOn": 1744224648470,
-            "_id": "eb96c0bc-aac3-4aa7-b908-7fa29201ac1f",
-            "_createdOn": 1744224648468
+            "_id": "18b06d4a-a516-4400-b9b4-fd43fbfce5a2"
         },
-        "f1e2d3c4-b5a6-4c5d-8e7f-9a0b1c2d3e4f": {
+        "4b5c6d7e-f8a9-4b0c-1d2e-3f4a5b6c7d8e": {
             "title": "Performance Battery",
             "category": "Electrical System",
             "brand": "Optima",
@@ -1659,10 +1657,10 @@
             "imageUrl": "https://ceb8596f236225acd007-8e95328c173a04ed694af83ee4e24c15.ssl.cf5.rackcdn.com/images/product/_zPattern/rb100-high-performance-lifepo4-battery.jpg",
             "rating": "5",
             "description": "High-performance AGM battery with superior starting power and deep cycle capabilities. Features spill-proof design and vibration resistance. Perfect for high-performance vehicles and off-road applications.",
-            "_id": "f1e2d3c4-b5a6-4c5d-8e7f-9a0b1c2d3e4f",
+            "_id": "4b5c6d7e-f8a9-4b0c-1d2e-3f4a5b6c7d8e",
             "_createdOn": 1744224648469
         },
-        "a1b2c3d4-e5f6-4b5c-8d7e-9f0a1b2c3d4e": {
+        "2b3c4d5e-f6a7-4b8c-9d0e-1f2a3b4c5d6e": {
             "title": "Performance Wiring Harness",
             "category": "Electrical System",
             "brand": "Painless",
@@ -1672,10 +1670,10 @@
             "imageUrl": "https://www.alkydigger.net/mm5/graphics/00000001/6/PS_CompleteKit_800.jpg",
             "rating": "4",
             "description": "Complete wiring harness kit with improved conductivity and durability. Features color-coded wires and comprehensive instructions. Includes all necessary connectors and terminals.",
-            "_id": "a1b2c3d4-e5f6-4b5c-8d7e-9f0a1b2c3d4e",
+            "_id": "2b3c4d5e-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
             "_createdOn": 1744224648470
         },
-        "b1c2d3e4-f5a6-4c5d-8e7f-9a0b1c2d3e4f": {
+        "4d5e6f7a-b8c9-4d0e-1f2a-3b4c5d6e7f8a": {
             "title": "Performance Exhaust Manifold",
             "category": "Exhaust System",
             "brand": "HKS",
@@ -1685,10 +1683,10 @@
             "imageUrl": "https://pdidiesel.com/cdn/shop/products/8445C-1_forWeb.jpg?v=1700638174&width=1214",
             "rating": "5",
             "description": "Stainless steel exhaust manifold with improved flow characteristics. Features equal-length runners and thermal coating. Designed for maximum power output and heat management.",
-            "_id": "b1c2d3e4-f5a6-4c5d-8e7f-9a0b1c2d3e4f",
+            "_id": "4d5e6f7a-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
             "_createdOn": 1744224648471
         },
-        "c1d2e3f4-a5b6-4d5e-8f7a-9b0c1d2e3f4a": {
+        "6f7a8b9c-d0e1-4f2a-3b4c-5d6e7f8a9b0c": {
             "title": "Performance Muffler",
             "category": "Exhaust System",
             "brand": "Borla",
@@ -1698,8 +1696,21 @@
             "imageUrl": "https://static.summitracing.com/global/images/prod/large/bor-40358.jpg",
             "rating": "4",
             "description": "High-performance muffler with aggressive sound and improved flow. Features straight-through design and stainless steel construction. Includes mounting hardware and instructions.",
-            "_id": "c1d2e3f4-a5b6-4d5e-8f7a-9b0c1d2e3f4a",
+            "_id": "6f7a8b9c-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
             "_createdOn": 1744224648472
+        },
+        "6b7c8d9e-0f1a-4b2c-3d4e-5f6a7b8c9d0e": {
+            "title": "High-Performance Alternator",
+            "category": "Electrical System",
+            "brand": "Bosch",
+            "price": "250",
+            "year": "2023",
+            "quantity": "10",
+            "imageUrl": "https://conceptzperformance.com/items/75996/original/769HpZZ.png",
+            "rating": "5",
+            "description": "High-output alternator designed for vehicles with additional electrical accessories. Features improved cooling and higher amperage output. Includes voltage regulator and mounting hardware.",
+            "_id": "6b7c8d9e-0f1a-4b2c-3d4e-5f6a7b8c9d0e",
+            "_createdOn": 1744224648456
         }
         },
         recipes: {
