@@ -10,7 +10,7 @@ export default function PartImport() {
 
     const { isAuthenticated } = useContext(AuthContext);
     const [formData, setFormData] = useState({
-        name: '',
+        title: '',
         price: '',
         description: '',
         imageUrl: '',
@@ -94,9 +94,9 @@ export default function PartImport() {
                                                         <label htmlFor="name" className="mb-1">Part Name <span className="required">*</span></label>
                                                         <input
                                                             type="text"
-                                                            id="name"
-                                                            name="name"
-                                                            value={formData.name}
+                                                            id="title"
+                                                            name="title"
+                                                            value={formData.title}
                                                             onChange={changeHandler}
                                                             required
                                                             placeholder="Enter part name"
